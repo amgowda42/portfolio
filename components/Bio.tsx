@@ -6,7 +6,7 @@ export default function Bio() {
   return (
     <section
       id="bio"
-      className="relative flex items-center bg-white pt-20 overflow-hidden"
+      className="relative min-h-screen flex items-center bg-white pt-20 overflow-hidden"
     >
       {/* ===== Electronics Background Drawings ===== */}
       <svg

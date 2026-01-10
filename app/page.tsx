@@ -1,3 +1,13 @@
+import Bio from "@/components/Bio";
+import Navbar from "@/components/Navbar";
+// import Skills from "@/components/Skills";
+
 export default function Page() {
-  return <h1 className="text-white">Home</h1>;
+  return (
+    <>
+      <Navbar />
+      <Bio />
+      {/* <Skills /> */}
+    </>
+  );
 }

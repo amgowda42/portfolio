@@ -33,8 +33,6 @@ export default function Navbar() {
         top: offsetPosition,
         behavior: "smooth",
       });
-
-      // Close mobile menu after clicking
       setIsMobileMenuOpen(false);
     }
   };
@@ -50,7 +48,6 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 md:h-20">
-            {/* Logo */}
             <div className="shrink-0">
               <button
                 onClick={() => scrollToSection("about")}
@@ -60,7 +57,6 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <button
@@ -74,7 +70,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -92,7 +87,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <div
         className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
           isMobileMenuOpen
@@ -100,7 +94,6 @@ export default function Navbar() {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Backdrop */}
         <div
           className={`absolute inset-0  backdrop-blur-sm transition-opacity duration-300 ${
             isMobileMenuOpen ? "opacity-100" : "opacity-0"
@@ -108,15 +101,13 @@ export default function Navbar() {
           onClick={() => setIsMobileMenuOpen(false)}
         />
 
-        {/* Menu Panel */}
         <div
           className={`absolute top-0 right-0 w-64 h-full bg-white shadow-2xl transition-transform duration-300 ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="flex flex-col h-full">
-            {/* Close Button */}
-            <div className="flex justify-end p-4 border-b border-gray-200">
+            <div className="flex justify-end p-4">
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-2 text-gray-700 hover:text-indigo-600 transition-colors"
@@ -126,7 +117,6 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Nav Items */}
             <div className="flex flex-col p-6 space-y-1">
               {navItems.map((item) => (
                 <button

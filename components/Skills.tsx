@@ -106,7 +106,6 @@ export default function Skills() {
 
         <div className="relative rounded-3xl bg-linear-to-br from-indigo-600 to-indigo-700 p-0.5">
           <div className="rounded-3xl bg-white p-8 sm:p-12">
-            {/* Skills Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
               {skills.map((skill, index) => {
                 const Icon = skill.icon;

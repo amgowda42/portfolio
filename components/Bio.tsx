@@ -5,7 +5,7 @@ import { Github, Twitter, Linkedin } from "lucide-react";
 export default function Bio() {
   return (
     <section
-      id="bio"
+      id="about"
       className="relative  flex items-center bg-white pt-20 overflow-hidden"
     >
       <svg

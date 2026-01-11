@@ -2,7 +2,7 @@ import { Code2, Server, Sparkles } from "lucide-react";
 
 export default function AboutExpertise() {
   return (
-    <section id="about" className="bg-white py-8">
+    <section className="bg-white py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">
@@ -70,7 +70,7 @@ export default function AboutExpertise() {
                 <span className="font-semibold text-indigo-600">
                   front-end solutions
                 </span>
-                , as I am currently more specialized in that, while also
+                , as I&apos;m currently more specialized in that, while also
                 extending my expertise to the back end.
               </p>
             </div>

@@ -6,7 +6,7 @@ import {
   Zap,
   Package,
   Server,
-  Workflow,
+  Sparkles,
   Leaf,
   Braces,
 } from "lucide-react";
@@ -45,12 +45,12 @@ const skills = [
     borderColor: "group-hover:border-gray-300",
   },
   {
-    name: "Tailwind CSS",
-    icon: Workflow,
-    color: "text-teal-500",
-    bgColor: "bg-teal-50",
-    hoverBg: "group-hover:bg-teal-100",
-    borderColor: "group-hover:border-teal-300",
+    name: "Vite",
+    icon: Sparkles,
+    color: "text-purple-500",
+    bgColor: "bg-purple-50",
+    hoverBg: "group-hover:bg-purple-100",
+    borderColor: "group-hover:border-purple-300",
   },
   {
     name: "Redux / RTK Query",

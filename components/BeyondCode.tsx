@@ -19,7 +19,7 @@ export default function BeyondCode() {
 
             <li className="flex items-start gap-3">
               <span className="text-gray-900 font-bold mt-1 shrink-0">•</span>
-              <span className="leading-relaxed text-indigo-700">
+              <span className="leading-relaxed text-indigo-700 font-medium">
                 I&apos;ve written more than 10 articles on various topics,
                 exploring ideas and sharing insights through writing.
               </span>
@@ -27,7 +27,7 @@ export default function BeyondCode() {
 
             <li className="flex items-start gap-3">
               <span className="text-gray-900 font-bold mt-1 shrink-0">•</span>
-              <span className="leading-relaxed text-indigo-700">
+              <span className="leading-relaxed text-indigo-700 font-medium">
                 I was a professional athlete from 2011 to 2017, and I still keep
                 a close eye on fitness and maintaining an active lifestyle.
               </span>

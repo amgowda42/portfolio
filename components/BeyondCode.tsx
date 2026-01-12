@@ -9,25 +9,25 @@ export default function BeyondCode() {
           </p>
 
           <ul className="space-y-4 max-w-3xl">
-            <li className="flex items-start gap-3 text-gray-700">
+            <li className="flex items-start gap-3">
               <span className="text-gray-900 font-bold mt-1 shrink-0">•</span>
-              <span className="leading-relaxed text-indigo-600 font-medium">
+              <span className="leading-relaxed text-indigo-700 font-medium">
                 I&apos;m a dendrophile with a deep passion for nature, trees,
                 environmental sensitivity, and understanding ecological effects.
               </span>
             </li>
 
-            <li className="flex items-start gap-3 text-gray-700">
+            <li className="flex items-start gap-3">
               <span className="text-gray-900 font-bold mt-1 shrink-0">•</span>
-              <span className="leading-relaxed text-indigo-600">
+              <span className="leading-relaxed text-indigo-700">
                 I&apos;ve written more than 10 articles on various topics,
                 exploring ideas and sharing insights through writing.
               </span>
             </li>
 
-            <li className="flex items-start gap-3 text-gray-700">
+            <li className="flex items-start gap-3">
               <span className="text-gray-900 font-bold mt-1 shrink-0">•</span>
-              <span className="leading-relaxed text-indigo-600">
+              <span className="leading-relaxed text-indigo-700">
                 I was a professional athlete from 2011 to 2017, and I still keep
                 a close eye on fitness and maintaining an active lifestyle.
               </span>

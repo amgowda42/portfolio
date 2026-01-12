@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Annappa Gowda",
   description:
-    "Full Stack Developer specializing in React, Next.js, and modern web technologies. Explore my projects including Vehiclete and Hey-Food.",
+    "Full Stack Developer",
 };
 
 export default function RootLayout({

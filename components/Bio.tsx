@@ -126,7 +126,7 @@ export default function Bio() {
               <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-linear-to-br from-[#4E5DE0] to-[#5868F7] p-0.5">
                 <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
                   <Image
-                    src="/image.png"
+                    src="/image_1.jpg"
                     alt="Annappa Gowda"
                     className="w-full h-full object-cover rounded-full"
                     width={600}

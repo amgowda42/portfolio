@@ -1,13 +1,13 @@
 import Image from "next/image";
-
 import { Github, Twitter, Linkedin } from "lucide-react";
 
 export default function Bio() {
   return (
     <section
       id="about"
-      className="relative  flex items-center bg-white pt-20 overflow-hidden"
+      className="relative flex items-center bg-white pt-20 overflow-hidden"
     >
+      {/* Top left circuit pattern */}
       <svg
         className="absolute top-10 left-10 w-72 h-72 text-gray-950 opacity-[0.12]"
         fill="none"
@@ -21,6 +21,7 @@ export default function Bio() {
         <circle cx="120" cy="140" r="3" />
       </svg>
 
+      {/* Bottom right microchip pattern */}
       <svg
         className="absolute bottom-16 right-20 w-80 h-80 text-gray-950 opacity-[0.12]"
         fill="none"
@@ -33,6 +34,7 @@ export default function Bio() {
         <path d="M80 60v-20M120 60v-20M80 140v20M120 140v20" />
       </svg>
 
+      {/* Center right wave pattern */}
       <svg
         className="absolute top-1/2 right-1/3 w-64 h-64 text-gray-950 opacity-[0.12]"
         fill="none"
@@ -41,6 +43,61 @@ export default function Bio() {
         viewBox="0 0 200 200"
       >
         <path d="M10 100c20-40 40-40 60 0s40 40 60 0 40-40 60 0" />
+      </svg>
+
+      {/* Top right resistor pattern */}
+      <svg
+        className="absolute top-20 right-1/4 w-56 h-56 text-gray-950 opacity-[0.10]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1"
+        viewBox="0 0 200 200"
+      >
+        <path d="M20 100h40l10-20 10 40 10-40 10 40 10-40 10 20h40" />
+        <circle cx="20" cy="100" r="2" fill="currentColor" />
+        <circle cx="180" cy="100" r="2" fill="currentColor" />
+      </svg>
+
+      {/* Bottom left capacitor pattern */}
+      <svg
+        className="absolute bottom-32 left-1/4 w-48 h-48 text-gray-950 opacity-[0.10]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1"
+        viewBox="0 0 200 200"
+      >
+        <path d="M40 100h40M120 100h40M80 60v80M120 60v80" />
+        <circle cx="40" cy="100" r="2" fill="currentColor" />
+        <circle cx="160" cy="100" r="2" fill="currentColor" />
+      </svg>
+
+      {/* Middle left transistor pattern */}
+      <svg
+        className="absolute top-1/3 left-1/3 w-40 h-40 text-gray-950 opacity-[0.08]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1"
+        viewBox="0 0 200 200"
+      >
+        <circle cx="100" cy="100" r="30" />
+        <path d="M100 70v60M130 85l-30 15M130 115l-30-15" />
+        <circle cx="100" cy="70" r="2" fill="currentColor" />
+        <circle cx="130" cy="85" r="2" fill="currentColor" />
+        <circle cx="130" cy="115" r="2" fill="currentColor" />
+      </svg>
+
+      {/* Bottom center integrated circuit pattern */}
+      <svg
+        className="absolute bottom-20 left-1/2 w-60 h-60 text-gray-950 opacity-[0.09]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1"
+        viewBox="0 0 200 200"
+      >
+        <rect x="70" y="70" width="60" height="60" rx="4" />
+        <path d="M70 90h-15M70 100h-15M70 110h-15M130 90h15M130 100h15M130 110h15" />
+        <path d="M90 70v-15M100 70v-15M110 70v-15M90 130v15M100 130v15M110 130v15" />
+        <circle cx="100" cy="100" r="8" />
       </svg>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -123,16 +180,14 @@ export default function Bio() {
 
           <div className="order-1 lg:order-2 flex justify-center">
             <div className="relative">
-              <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-linear-to-br from-[#4E5DE0] to-[#5868F7] p-0.5">
-                <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="/image_1.jpg"
-                    alt="Annappa Gowda"
-                    className="w-full h-full object-cover rounded-full"
-                    width={600}
-                    height={600}
-                  />
-                </div>
+              <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-full shadow-2xl">
+                <Image
+                  src="/image_1.jpg"
+                  alt="Annappa Gowda"
+                  className="w-full h-full object-cover rounded-full"
+                  width={600}
+                  height={600}
+                />
               </div>
             </div>
           </div>

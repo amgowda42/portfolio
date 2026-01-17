@@ -162,7 +162,7 @@ export default function Bio() {
                 </div>
               </div>
               <div className="absolute inset-0 rounded-full bg-linear-to-r from-blue-400 to-purple-500 opacity-20 blur-2xl animate-pulse-slow" />
-              <div className="relative w-72 h-72 sm:w-70 sm:h-70 rounded-full shadow-2xl overflow-hidden group">
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full shadow-2xl overflow-hidden group">
                 <div className="absolute inset-0 bg-linear-to-r from-[#4E5DE0] to-[#5868F7] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
                 <Image
                   src="/image_1.jpg"

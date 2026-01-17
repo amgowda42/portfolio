@@ -1,128 +1,97 @@
+"use client";
 import Image from "next/image";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Github, Twitter, Linkedin, Code2, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Bio() {
+  const [isClient, setIsClient] = useState(false);
+  const [particles] = useState(() =>
+    [...Array(20)].map(() => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: 5 + Math.random() * 10,
+    })),
+  );
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsClient(true);
+  }, []);
+
   return (
     <section
       id="about"
-      className="relative flex items-center bg-white pt-20 overflow-hidden"
+      className="relative flex items-center bg-white pt-20 overflow-hidden min-h-screen"
     >
-      {/* Top left circuit pattern */}
-      <svg
-        className="absolute top-10 left-10 w-72 h-72 text-gray-950 opacity-[0.12]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1"
-        viewBox="0 0 200 200"
-      >
-        <path d="M20 40h60v40h40v60h60" />
-        <circle cx="20" cy="40" r="3" />
-        <circle cx="80" cy="80" r="3" />
-        <circle cx="120" cy="140" r="3" />
-      </svg>
-
-      {/* Bottom right microchip pattern */}
-      <svg
-        className="absolute bottom-16 right-20 w-80 h-80 text-gray-950 opacity-[0.12]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1"
-        viewBox="0 0 200 200"
-      >
-        <rect x="60" y="60" width="80" height="80" rx="8" />
-        <path d="M60 80h-20M60 120h-20M140 80h20M140 120h20" />
-        <path d="M80 60v-20M120 60v-20M80 140v20M120 140v20" />
-      </svg>
-
-      {/* Center right wave pattern */}
-      <svg
-        className="absolute top-1/2 right-1/3 w-64 h-64 text-gray-950 opacity-[0.12]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1"
-        viewBox="0 0 200 200"
-      >
-        <path d="M10 100c20-40 40-40 60 0s40 40 60 0 40-40 60 0" />
-      </svg>
-
-      {/* Top right resistor pattern */}
-      <svg
-        className="absolute top-20 right-1/4 w-56 h-56 text-gray-950 opacity-[0.10]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1"
-        viewBox="0 0 200 200"
-      >
-        <path d="M20 100h40l10-20 10 40 10-40 10 40 10-40 10 20h40" />
-        <circle cx="20" cy="100" r="2" fill="currentColor" />
-        <circle cx="180" cy="100" r="2" fill="currentColor" />
-      </svg>
-
-      {/* Bottom left capacitor pattern */}
-      <svg
-        className="absolute bottom-32 left-1/4 w-48 h-48 text-gray-950 opacity-[0.10]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1"
-        viewBox="0 0 200 200"
-      >
-        <path d="M40 100h40M120 100h40M80 60v80M120 60v80" />
-        <circle cx="40" cy="100" r="2" fill="currentColor" />
-        <circle cx="160" cy="100" r="2" fill="currentColor" />
-      </svg>
-
-      {/* Middle left transistor pattern */}
-      <svg
-        className="absolute top-1/3 left-1/3 w-40 h-40 text-gray-950 opacity-[0.08]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1"
-        viewBox="0 0 200 200"
-      >
-        <circle cx="100" cy="100" r="30" />
-        <path d="M100 70v60M130 85l-30 15M130 115l-30-15" />
-        <circle cx="100" cy="70" r="2" fill="currentColor" />
-        <circle cx="130" cy="85" r="2" fill="currentColor" />
-        <circle cx="130" cy="115" r="2" fill="currentColor" />
-      </svg>
-
-      {/* Bottom center integrated circuit pattern */}
-      <svg
-        className="absolute bottom-20 left-1/2 w-60 h-60 text-gray-950 opacity-[0.09]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1"
-        viewBox="0 0 200 200"
-      >
-        <rect x="70" y="70" width="60" height="60" rx="4" />
-        <path d="M70 90h-15M70 100h-15M70 110h-15M130 90h15M130 100h15M130 110h15" />
-        <path d="M90 70v-15M100 70v-15M110 70v-15M90 130v15M100 130v15M110 130v15" />
-        <circle cx="100" cy="100" r="8" />
-      </svg>
-
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {particles.map((particle, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-500 rounded-full opacity-20"
+              style={{
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                animation: `float ${particle.duration}s infinite ease-in-out`,
+                animationDelay: `${particle.delay}s`,
+              }}
+            />
+          ))}
+        </div>
+      )}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="order-2 lg:order-1">
             <div className="max-w-xl">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
+              <h1
+                className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 transition-all duration-1000 ${
+                  isClient
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+              >
                 Annappa Gowda
               </h1>
-
-              <h2 className="text-2xl sm:text-3xl font-semibold mb-6 bg-linear-to-r from-[#4E5DE0] to-[#5868F7] bg-clip-text text-transparent">
-                Full Stack Developer
-              </h2>
-
-              <p className="text-lg text-gray-600 leading-relaxed mb-4">
+              <div className="relative mb-6 overflow-hidden h-12">
+                <h2
+                  className={`text-2xl sm:text-3xl font-semibold bg-linear-to-r from-[#4E5DE0] to-[#5868F7] bg-clip-text text-transparent inline-flex items-center gap-3 transition-all duration-1000 delay-300 ${
+                    isClient
+                      ? "translate-x-0 opacity-100"
+                      : "-translate-x-full opacity-0"
+                  }`}
+                >
+                  <Code2 className="text-[#4E5DE0]" size={28} />
+                  Full Stack Developer
+                  <Sparkles
+                    className="text-[#5868F7] animate-pulse"
+                    size={20}
+                  />
+                </h2>
+              </div>
+              <p
+                className={`text-lg text-gray-600 leading-relaxed mb-4 transition-all duration-1000 delay-500 ${
+                  isClient
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+              >
                 Full Stack Developer with 1.6 years of professional experience,
                 having worked on more than five products. I hold a Bachelor of
                 Engineering degree in Electronics and Communication Engineering.
               </p>
-              <div className="flex items-center gap-4">
+              <div
+                className={`flex items-center gap-4 transition-all duration-1000 delay-700 ${
+                  isClient
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+              >
                 <a
                   href="https://github.com/amgowda42"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110"
+                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110 hover:rotate-12"
                   aria-label="GitHub"
                 >
                   <Github
@@ -131,12 +100,11 @@ export default function Bio() {
                     strokeWidth={2}
                   />
                 </a>
-
                 <a
                   href="https://x.com/AnnappaGowda7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110"
+                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110 hover:rotate-12"
                   aria-label="Twitter/X"
                 >
                   <Twitter
@@ -146,10 +114,10 @@ export default function Bio() {
                   />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/annappa-gowda?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  href="https://www.linkedin.com/in/annappa-gowda"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110"
+                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110 hover:rotate-12"
                   aria-label="LinkedIn"
                 >
                   <Linkedin
@@ -158,12 +126,11 @@ export default function Bio() {
                     strokeWidth={2}
                   />
                 </a>
-
                 <a
                   href="https://medium.com/@annappag2020"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110"
+                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110 hover:rotate-12"
                   aria-label="Medium"
                 >
                   <svg
@@ -177,22 +144,97 @@ export default function Bio() {
               </div>
             </div>
           </div>
-
           <div className="order-1 lg:order-2 flex justify-center">
-            <div className="relative">
-              <div className="w-72 h-72 sm:w-80 sm:h-80 rounded-full shadow-2xl">
+            <div
+              className={`relative transition-all duration-1000 delay-200 ${
+                isClient ? "opacity-100 scale-100" : "opacity-0 scale-90"
+              }`}
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute w-96 h-96 rounded-full border-2 border-blue-200 opacity-30 animate-spin-slow">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50" />
+                </div>
+                <div className="absolute w-88 h-88 rounded-full border-2 border-purple-200 opacity-40 animate-spin-reverse">
+                  <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-purple-500 rounded-full shadow-lg shadow-purple-500/50" />
+                </div>
+                <div className="absolute w-84 h-84 rounded-full border-2 border-indigo-200 opacity-50 animate-spin-medium">
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-indigo-500 rounded-full shadow-lg shadow-indigo-500/50" />
+                </div>
+              </div>
+              <div className="absolute inset-0 rounded-full bg-linear-to-r from-blue-400 to-purple-500 opacity-20 blur-2xl animate-pulse-slow" />
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full shadow-2xl overflow-hidden group">
+                <div className="absolute inset-0 bg-linear-to-r from-[#4E5DE0] to-[#5868F7] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
                 <Image
                   src="/image_1.jpg"
                   alt="Annappa Gowda"
-                  className="w-full h-full object-cover rounded-full"
+                  className=" width={600}
+                  height={600} object-cover transform group-hover:scale-110 transition-transform duration-700"
                   width={600}
                   height={600}
                 />
               </div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-linear-to-br from-blue-500 to-purple-600 rounded-full opacity-20 blur-xl animate-pulse-slow" />
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-linear-to-tr from-indigo-500 to-blue-600 rounded-full opacity-20 blur-xl animate-pulse-delay" />
             </div>
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0) translateX(0);
+          }
+          25% {
+            transform: translateY(-20px) translateX(10px);
+          }
+          50% {
+            transform: translateY(-10px) translateX(-10px);
+          }
+          75% {
+            transform: translateY(-15px) translateX(5px);
+          }
+        }
+
+        @keyframes spin-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes spin-reverse {
+          from {
+            transform: rotate(360deg);
+          }
+          to {
+            transform: rotate(0deg);
+          }
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
+        }
+
+        .animate-spin-reverse {
+          animation: spin-reverse 15s linear infinite;
+        }
+
+        .animate-spin-medium {
+          animation: spin-slow 12s linear infinite;
+        }
+
+        .animate-pulse-slow {
+          animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .animate-pulse-delay {
+          animation: pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          animation-delay: 1s;
+        }
+      `}</style>
     </section>
   );
 }

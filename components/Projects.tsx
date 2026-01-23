@@ -53,7 +53,6 @@ export default function Projects() {
             Featured Projects
           </h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
             <a
@@ -61,18 +60,20 @@ export default function Projects() {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative cursor-pointer rounded-3xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:-translate-y-2 hover:border-indigo-400 hover:shadow-[0_20px_60px_-15px_rgba(79,70,229,0.3)] flex flex-col h-full"
+              className="group relative cursor-pointer rounded-3xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:-translate-y-2 hover:border-indigo-400 hover:shadow-[0_20px_60px_-15px_rgba(79,70,229,0.3)] active:scale-[0.98] md:active:scale-100 flex flex-col h-full"
             >
-              <div className="absolute right-6 top-6 opacity-0 transition-all duration-300 group-hover:opacity-100 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0">
-                <ArrowUpRight
-                  size={24}
-                  className="text-indigo-600"
-                  strokeWidth={2.5}
-                />
+              <div className="absolute right-6 top-6 transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 md:translate-x-2 md:-translate-y-2 md:group-hover:translate-x-0 md:group-hover:translate-y-0">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-50 md:bg-transparent group-hover:bg-indigo-100 transition-colors">
+                  <ArrowUpRight
+                    size={24}
+                    className="text-indigo-600"
+                    strokeWidth={2.5}
+                  />
+                </div>
               </div>
 
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-indigo-600 transition-colors duration-300 pr-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-indigo-600 transition-colors duration-300 pr-12">
                   {project.title}
                 </h3>
 
@@ -89,7 +90,6 @@ export default function Projects() {
                     </li>
                   ))}
                 </ul>
-
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tags.map((tag, index) => (
                     <span
@@ -100,6 +100,10 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+              </div>
+              <div className="md:hidden mt-4 pt-4 border-t border-gray-100 flex items-center justify-end gap-2 text-sm text-indigo-600 font-medium">
+                <span>View on GitHub</span>
+                <ArrowUpRight size={16} strokeWidth={2.5} />
               </div>
             </a>
           ))}

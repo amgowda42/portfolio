@@ -12,7 +12,7 @@ export default function BeyondCode() {
             <li className="flex items-start gap-3">
               <span className="text-gray-900 font-bold mt-1 shrink-0">•</span>
               <span className="leading-relaxed text-indigo-700 font-medium">
-                I&apos;m a dendrophile with a deep passion for nature, trees,
+                I&apos;m a dendrophile with a deep passion about wild life, essense of trees,
                 environmental sensitivity, and understanding ecological effects.
               </span>
             </li>

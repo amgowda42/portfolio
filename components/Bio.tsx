@@ -78,7 +78,7 @@ export default function Bio() {
               >
                 Full Stack Developer with 1.6 years of professional experience,
                 having worked on more than five products. I hold a Bachelor of
-                Engineering degree in Electronics and Communication Engineering.
+                Engineering degree in Electronics and Communication.
               </p>
               <div
                 className={`flex items-center gap-4 transition-all duration-1000 delay-700 ${

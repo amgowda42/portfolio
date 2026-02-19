@@ -1,238 +1,295 @@
 "use client";
+
 import Image from "next/image";
-import { Github, Twitter, Linkedin, Code2, Sparkles } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Github, Twitter, Linkedin, ArrowDownRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Bio() {
-  const [isClient, setIsClient] = useState(false);
-  const [particles] = useState(() =>
-    [...Array(20)].map(() => ({
-      left: Math.random() * 100,
-      top: Math.random() * 100,
-      delay: Math.random() * 5,
-      duration: 5 + Math.random() * 10,
-    })),
-  );
+  const [isClient] = useState(true);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsClient(true);
+    const handleMouse = (e: MouseEvent): void => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      setMousePos({
+        x: ((e.clientX - rect.left) / rect.width - 0.5) * 20,
+        y: ((e.clientY - rect.top) / rect.height - 0.5) * 20,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouse);
+    return () => window.removeEventListener("mousemove", handleMouse);
   }, []);
+
+  const socials = [
+    {
+      href: "https://github.com/amgowda42",
+      label: "GitHub",
+      icon: <Github size={18} strokeWidth={1.5} />,
+      handle: "amgowda42",
+    },
+    {
+      href: "https://x.com/AnnappaGowda7",
+      label: "Twitter/X",
+      icon: <Twitter size={18} strokeWidth={1.5} />,
+      handle: "@AnnappaGowda7",
+    },
+    {
+      href: "https://www.linkedin.com/in/annappa-gowda",
+      label: "LinkedIn",
+      icon: <Linkedin size={18} strokeWidth={1.5} />,
+      handle: "annappa-gowda",
+    },
+    {
+      href: "https://medium.com/@annappag2020",
+      label: "Medium",
+      icon: (
+        <svg className="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+        </svg>
+      ),
+      handle: "@annappag2020",
+    },
+  ];
 
   return (
     <section
       id="about"
-      className="relative flex items-center bg-white pt-20 overflow-hidden min-h-screen"
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center overflow-hidden bg-white pt-20"
     >
+      <div className="absolute inset-0 dot-grid pointer-events-none" />
+
+      <div
+        className="absolute w-175 h-175 rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 65%)",
+          top: "-10%",
+          right: "-5%",
+          transform: isClient
+            ? `translate(${-mousePos.x * 0.2}px, ${-mousePos.y * 0.2}px)`
+            : "none",
+          transition: "transform 0.7s ease-out",
+        }}
+      />
+      <div
+        className="absolute w-125 h-125 rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 65%)",
+          bottom: "0%",
+          left: "-5%",
+          transform: isClient
+            ? `translate(${mousePos.x * 0.15}px, ${mousePos.y * 0.15}px)`
+            : "none",
+          transition: "transform 1s ease-out",
+        }}
+      />
+
       {isClient && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {particles.map((particle, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-500 rounded-full opacity-20"
-              style={{
-                left: `${particle.left}%`,
-                top: `${particle.top}%`,
-                animation: `float ${particle.duration}s infinite ease-in-out`,
-                animationDelay: `${particle.delay}s`,
-              }}
-            />
-          ))}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {["const", "async", "=>", "{}", "[]", "npm", "git", "ssh"].map(
+            (text, i) => (
+              <span
+                key={i}
+                className="absolute font-mono text-xs select-none"
+                style={{
+                  color: "rgba(99,102,241,0.12)",
+                  left: `${10 + i * 12}%`,
+                  top: `${15 + (i % 3) * 25}%`,
+                  animation: `floatCode ${6 + i * 0.7}s ease-in-out infinite`,
+                  animationDelay: `${i * 0.8}s`,
+                }}
+              >
+                {text}
+              </span>
+            ),
+          )}
         </div>
       )}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="order-2 lg:order-1">
-            <div className="max-w-xl">
-              <h1
-                className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 transition-all duration-1000 ${
-                  isClient
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
-              >
-                Annappa Gowda
+
+      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-16 lg:gap-24 items-center">
+          <div className="order-2 lg:order-1 space-y-8">
+            <div
+              className={`transition-all duration-700 delay-100 ${isClient ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            >
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-900 leading-none tracking-tight">
+                Annappa
+                <br />
+                <span
+                  className="relative inline-block"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #3b82f6 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Gowda
+                </span>
               </h1>
-              <div className="relative mb-6 overflow-hidden h-12">
-                <h2
-                  className={`text-2xl sm:text-3xl font-semibold bg-linear-to-r from-[#4E5DE0] to-[#5868F7] bg-clip-text text-transparent inline-flex items-center gap-3 transition-all duration-1000 delay-300 ${
-                    isClient
-                      ? "translate-x-0 opacity-100"
-                      : "-translate-x-full opacity-0"
-                  }`}
-                >
-                  <Code2 className="text-[#4E5DE0]" size={28} />
+            </div>
+
+            <div
+              className={`transition-all duration-700 delay-200 ${isClient ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-px w-8 bg-indigo-700" />
+                <span className="font-mono text-sm text-indigo-500 tracking-widest uppercase">
                   Full Stack Developer
-                  <Sparkles
-                    className="text-[#5868F7] animate-pulse"
-                    size={20}
-                  />
-                </h2>
+                </span>
               </div>
-              <p
-                className={`text-lg text-gray-600 leading-relaxed mb-4 transition-all duration-1000 delay-500 ${
-                  isClient
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
-              >
-                Full Stack Developer with 1.6 years of professional experience,
-                having worked on more than five products. I hold a Bachelor of
-                Engineering degree in Electronics and Communication.
+              <p className="text-lg text-gray-500 leading-relaxed max-w-lg font-light">
+                1.6 years of professional experience contributing majorly to{" "}
+                <span className="text-gray-800 font-medium">
+                  company-scale products
+                </span>
+                . Currently diving deep into{" "}
+                <span className="text-indigo-600 font-medium">
+                  server infrastructure
+                </span>
+                , scaling systems, and cloud deployment.
               </p>
-              <div
-                className={`flex items-center gap-4 transition-all duration-1000 delay-700 ${
-                  isClient
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
-              >
+            </div>
+
+            <div
+              className={`space-y-2 transition-all duration-700 delay-500 ${isClient ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            >
+              {socials.map((s) => (
                 <a
-                  href="https://github.com/amgowda42"
+                  key={s.label}
+                  href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110 hover:rotate-12"
-                  aria-label="GitHub"
+                  className="group flex items-center gap-4 py-2.5 px-4 rounded-xl border border-transparent hover:border-gray-200 hover:bg-gray-50 transition-all duration-200 w-fit"
+                  aria-label={s.label}
                 >
-                  <Github
-                    size={22}
-                    className="text-gray-700 group-hover:text-white transition-colors duration-300"
-                    strokeWidth={2}
+                  <span className="text-gray-400 group-hover:text-indigo-500 transition-colors duration-200">
+                    {s.icon}
+                  </span>
+                  <span className="font-mono text-sm text-gray-400 group-hover:text-gray-800 transition-colors duration-200">
+                    {s.handle}
+                  </span>
+                  <ArrowDownRight
+                    size={14}
+                    className="text-transparent group-hover:text-indigo-500 transition-all duration-200 -rotate-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
                 </a>
-                <a
-                  href="https://x.com/AnnappaGowda7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110 hover:rotate-12"
-                  aria-label="Twitter/X"
-                >
-                  <Twitter
-                    size={22}
-                    className="text-gray-700 group-hover:text-white transition-colors duration-300"
-                    strokeWidth={2}
-                  />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/annappa-gowda"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110 hover:rotate-12"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin
-                    size={22}
-                    className="text-gray-700 group-hover:text-white transition-colors duration-300"
-                    strokeWidth={2}
-                  />
-                </a>
-                <a
-                  href="https://medium.com/@annappag2020"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 hover:bg-linear-to-r from-[#4E5DE0] to-[#5868F7] transition-all duration-300 hover:scale-110 hover:rotate-12"
-                  aria-label="Medium"
-                >
-                  <svg
-                    className="w-6 h-6 text-gray-700 group-hover:text-white transition-colors duration-300"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
-                  </svg>
-                </a>
-              </div>
+              ))}
             </div>
           </div>
-          <div className="order-1 lg:order-2 flex justify-center">
-            <div
-              className={`relative transition-all duration-1000 delay-200 ${
-                isClient ? "opacity-100 scale-100" : "opacity-0 scale-90"
-              }`}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="absolute w-96 h-96 rounded-full border-2 border-blue-200 opacity-30 animate-spin-slow">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50" />
-                </div>
-                <div className="absolute w-88 h-88 rounded-full border-2 border-purple-200 opacity-40 animate-spin-reverse">
-                  <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-purple-500 rounded-full shadow-lg shadow-purple-500/50" />
-                </div>
-                <div className="absolute w-84 h-84 rounded-full border-2 border-indigo-200 opacity-50 animate-spin-medium">
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-indigo-500 rounded-full shadow-lg shadow-indigo-500/50" />
-                </div>
-              </div>
-              <div className="absolute inset-0 rounded-full bg-linear-to-r from-blue-400 to-purple-500 opacity-20 blur-2xl animate-pulse-slow" />
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full shadow-2xl overflow-hidden group">
-                <div className="absolute inset-0 bg-linear-to-r from-[#4E5DE0] to-[#5868F7] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+
+          <div
+            className={`order-1 lg:order-2 flex justify-center lg:justify-end transition-all duration-1000 delay-300 ${isClient ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+          >
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-indigo-500/50 rounded-tl-sm" />
+              <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-indigo-500/50 rounded-br-sm" />
+
+              <div
+                className="absolute inset-0 rounded-2xl blur-3xl opacity-30"
+                style={{
+                  background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                  transform: isClient
+                    ? `translate(${mousePos.x * 0.05}px, ${mousePos.y * 0.05}px)`
+                    : "none",
+                  transition: "transform 0.4s ease-out",
+                }}
+              />
+
+              <div
+                className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden border border-gray-200 shadow-xl shadow-gray-200/80"
+                style={{
+                  transform: isClient
+                    ? `perspective(1000px) rotateY(${mousePos.x * 0.015}deg) rotateX(${-mousePos.y * 0.015}deg)`
+                    : "none",
+                  transition: "transform 0.3s ease-out",
+                }}
+              >
                 <Image
                   src="/image_1.jpg"
                   alt="Annappa Gowda"
-                  className=" width={600}
-                  height={600} object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  width={600}
-                  height={600}
+                  className="object-cover"
+                  fill
+                  priority
                 />
+
+                <div className="absolute inset-0 bg-linear-to-t from-white/30 via-transparent to-transparent" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-4 backdrop-blur-sm bg-white/60 border-t border-white/60">
+                  <p className="text-xs font-mono text-gray-500">
+                    <span className="text-indigo-500">~/</span> annappa-gowda
+                  </p>
+                </div>
               </div>
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-linear-to-br from-blue-500 to-purple-600 rounded-full opacity-20 blur-xl animate-pulse-slow" />
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-linear-to-tr from-indigo-500 to-blue-600 rounded-full opacity-20 blur-xl animate-pulse-delay" />
+
+              <div
+                className={`absolute -right-10 top-8 px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-lg shadow-gray-100 transition-all duration-1000 delay-700 ${
+                  isClient
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-4"
+                }`}
+              >
+                <p className="text-2xl font-black text-gray-900">5+</p>
+                <p className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">
+                  Products
+                </p>
+              </div>
+
+              <div
+                className={`absolute -left-10 bottom-16 px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-lg shadow-gray-100 transition-all duration-1000 delay-900 ${
+                  isClient
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 -translate-x-4"
+                }`}
+              >
+                <p className="text-2xl font-black text-gray-900">
+                  1.6
+                  <span className="text-sm font-normal text-gray-400">yr</span>
+                </p>
+                <p className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">
+                  Experience
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {isClient && (
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
+          <span className="text-[10px] font-mono text-gray-400 tracking-widest uppercase">
+            scroll
+          </span>
+          <div className="w-px h-8 bg-linear-to-b from-gray-400 to-transparent animate-pulse" />
+        </div>
+      )}
+
       <style jsx>{`
-        @keyframes float {
+        .dot-grid {
+          background-image: radial-gradient(
+            circle,
+            rgba(99, 102, 241, 0.13) 1px,
+            transparent 1px
+          );
+          background-size: 28px 28px;
+        }
+
+        @keyframes floatCode {
           0%,
           100% {
-            transform: translateY(0) translateX(0);
-          }
-          25% {
-            transform: translateY(-20px) translateX(10px);
+            transform: translateY(0px);
+            opacity: 1;
           }
           50% {
-            transform: translateY(-10px) translateX(-10px);
+            transform: translateY(-18px);
+            opacity: 0;
           }
-          75% {
-            transform: translateY(-15px) translateX(5px);
-          }
-        }
-
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes spin-reverse {
-          from {
-            transform: rotate(360deg);
-          }
-          to {
-            transform: rotate(0deg);
-          }
-        }
-
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-
-        .animate-spin-reverse {
-          animation: spin-reverse 15s linear infinite;
-        }
-
-        .animate-spin-medium {
-          animation: spin-slow 12s linear infinite;
-        }
-
-        .animate-pulse-slow {
-          animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        .animate-pulse-delay {
-          animation: pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-          animation-delay: 1s;
         }
       `}</style>
     </section>

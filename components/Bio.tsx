@@ -144,13 +144,13 @@ export default function Bio() {
                   Full Stack Developer
                 </span>
               </div>
-              <p className="text-lg text-gray-500 leading-relaxed max-w-lg font-light">
+              <p className="text-lg text-gray-500 leading-relaxed max-w-lg font-medium">
                 1.6 years of professional experience contributing majorly to{" "}
-                <span className="text-gray-800 font-medium">
+                <span className="text-gray-800 font-semibold">
                   company-scale products
                 </span>
                 . Currently diving deep into{" "}
-                <span className="text-indigo-600 font-medium">
+                <span className="text-indigo-600 font-semibold">
                   server infrastructure
                 </span>
                 , scaling systems, and cloud deployment.
@@ -226,35 +226,6 @@ export default function Bio() {
                     <span className="text-indigo-500">~/</span> annappa-gowda
                   </p>
                 </div>
-              </div>
-
-              <div
-                className={`absolute -right-10 top-8 px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-lg shadow-gray-100 transition-all duration-1000 delay-700 ${
-                  isClient
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-4"
-                }`}
-              >
-                <p className="text-2xl font-black text-gray-900">5+</p>
-                <p className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">
-                  Products
-                </p>
-              </div>
-
-              <div
-                className={`absolute -left-10 bottom-16 px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-lg shadow-gray-100 transition-all duration-1000 delay-900 ${
-                  isClient
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 -translate-x-4"
-                }`}
-              >
-                <p className="text-2xl font-black text-gray-900">
-                  1.6
-                  <span className="text-sm font-normal text-gray-400">yr</span>
-                </p>
-                <p className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">
-                  Experience
-                </p>
               </div>
             </div>
           </div>

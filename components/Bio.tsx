@@ -149,17 +149,21 @@ export default function Bio() {
     </span>
   </div>
 </div>
-              <p className="text-lg text-gray-500 leading-relaxed max-w-lg font-medium">
-                1.6 years of professional experience contributing majorly to{" "}
-                <span className="text-gray-800 font-semibold">
-                  company-scale products
-                </span>
-                . Currently diving deep into{" "}
-                <span className="text-indigo-600 font-semibold">
-                  server infrastructure
-                </span>
-                , scaling systems, and cloud deployment.
-              </p>
+      <p className="text-lg text-gray-500 leading-relaxed max-w-lg font-medium">
+  1.6 years of professional experience contributing majorly to{" "}
+  <span className="text-gray-800 font-semibold">
+    company-scale products
+  </span>
+  . Currently diving deep into{" "}
+  <span className="text-indigo-600 font-semibold">
+    server infrastructure
+  </span>
+  , scaling systems, and cloud deployment. Also a{" "}
+  <span className="text-purple-500 font-semibold">
+    hobbyist wordsmith
+  </span>
+  {" "}— novels, articles, and plays(theatre).
+</p>
             </div>
 
             <div

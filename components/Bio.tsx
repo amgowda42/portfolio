@@ -134,11 +134,8 @@ export default function Bio() {
                 </span>
               </h1>
             </div>
-
-            <div
-              className={`transition-all duration-700 delay-200 ${isClient ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-            >
-  <div className="flex items-center gap-5 mb-4">
+<div className={`transition-all duration-700 delay-200 ${isClient ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+  <div className="flex items-center gap-3 mb-4">
   <div className="flex items-center gap-2">
     <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
     <span className="font-mono text-sm text-indigo-500 tracking-widest uppercase whitespace-nowrap">

@@ -143,6 +143,7 @@ export default function Bio() {
                 <span className="font-mono text-sm text-indigo-500 tracking-widest uppercase">
                   Full Stack Developer
                 </span>
+                <span className="font-mono text-sm text-purple-400 tracking-widest uppercase">Wordsmith</span>
               </div>
               <p className="text-lg text-gray-500 leading-relaxed max-w-lg font-medium">
                 1.6 years of professional experience contributing majorly to{" "}

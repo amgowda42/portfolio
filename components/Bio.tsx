@@ -134,36 +134,39 @@ export default function Bio() {
                 </span>
               </h1>
             </div>
-<div className={`transition-all duration-700 delay-200 ${isClient ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-  <div className="flex items-center gap-3 mb-4">
-  <div className="flex items-center gap-2">
-    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-    <span className="font-mono text-sm text-indigo-500 tracking-widest uppercase whitespace-nowrap">
-      Full Stack Developer
-    </span>
-  </div>
-  <div className="flex items-center gap-2">
-    <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-    <span className="font-mono text-sm text-purple-400 tracking-widest uppercase">
-      Wordsmith
-    </span>
-  </div>
-</div>
-      <p className="text-lg text-gray-500 leading-relaxed max-w-lg font-medium">
-  1.6 years of professional experience contributing majorly to{" "}
-  <span className="text-gray-800 font-semibold">
-    company-scale products
-  </span>
-  . Currently diving deep into{" "}
-  <span className="text-indigo-600 font-semibold">
-    server infrastructure
-  </span>
-  , scaling systems, and cloud deployment. Also a{" "}
-  <span className="text-purple-500 font-semibold">
-    hobbyist wordsmith
-  </span>
-  {" "}— novels, articles, and plays(theatre).
-</p>
+            <div
+              className={`transition-all duration-700 delay-200 ${isClient ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                  <span className="font-mono text-sm text-indigo-500 tracking-widest uppercase whitespace-nowrap">
+                    Full Stack Developer
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                  <span className="font-mono text-sm text-purple-400 tracking-widest uppercase">
+                    Wordsmith
+                  </span>
+                </div>
+              </div>
+              <p className="text-lg text-gray-500 leading-relaxed max-w-lg font-medium">
+                My passion lies in crafting{" "}
+                <span className="text-gray-800 font-semibold">
+                  elegant web applications
+                </span>{" "}
+                that seamlessly blend form and function. With an insatiable
+                curiosity for technology, I transform ideas into powerful,{" "}
+                <span className="text-indigo-600 font-semibold">
+                  full-stack digital experiences.
+                </span>{" "}
+                Also a{" "}
+                <span className="text-purple-500 font-semibold">
+                  hobbyist wordsmith
+                </span>{" "}
+                — novels, articles, and plays (theatre).
+              </p>
             </div>
 
             <div

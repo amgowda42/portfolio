@@ -288,7 +288,15 @@ export default function Bio() {
           </div>
 
           {/* Right — photo */}
-          <div style={{ position: "relative", flexShrink: 0 }}>
+          <div
+            style={{
+              position: "relative",
+              flexShrink: 0,
+              display: "flex", // ✅ add
+              justifyContent: "center", // ✅ add
+            }}
+            className="bio-photo"
+          >
             {/* Corner brackets */}
             <div
               aria-hidden

@@ -207,11 +207,12 @@ export default function Navbar() {
               padding: "16px",
               borderBottom: "1px solid var(--border)",
             }}
-          ></div>
+          >
+          </div>
 
           <div
             style={{
-              padding: "16px",
+              padding: "30px",
               display: "flex",
               flexDirection: "column",
               gap: "4px",

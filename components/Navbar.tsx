@@ -207,20 +207,7 @@ export default function Navbar() {
               padding: "16px",
               borderBottom: "1px solid var(--border)",
             }}
-          >
-            <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                color: "var(--text-muted)",
-                padding: "4px",
-              }}
-            >
-              <X size={20} />
-            </button>
-          </div>
+          ></div>
 
           <div
             style={{

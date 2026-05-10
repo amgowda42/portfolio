@@ -74,7 +74,7 @@ export default function Bio() {
         alignItems: "center",
         overflow: "hidden",
         background: "var(--bg-primary)",
-        paddingTop: "80px",
+        paddingTop: "40px",
       }}
     >
       {/* Grid background */}

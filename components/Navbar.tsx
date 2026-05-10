@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { X, Menu } from "lucide-react";
 
@@ -57,7 +58,6 @@ export default function Navbar() {
               height: "64px",
             }}
           >
-            {/* Logo */}
             <button
               onClick={() => scrollToSection("about")}
               style={{
@@ -98,8 +98,6 @@ export default function Navbar() {
                 Annappa Gowda
               </span>
             </button>
-
-            {/* Desktop nav */}
             <div
               style={{
                 display: "flex",
@@ -136,8 +134,6 @@ export default function Navbar() {
                 </button>
               ))}
             </div>
-
-            {/* Mobile hamburger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               style={{
@@ -161,8 +157,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      {/* Mobile drawer */}
       <div
         style={{
           position: "fixed",
@@ -171,7 +165,6 @@ export default function Navbar() {
           pointerEvents: isMobileMenuOpen ? "auto" : "none",
         }}
       >
-        {/* Backdrop */}
         <div
           onClick={() => setIsMobileMenuOpen(false)}
           style={{
@@ -183,8 +176,6 @@ export default function Navbar() {
             transition: "opacity 0.3s",
           }}
         />
-
-        {/* Drawer */}
         <div
           style={{
             position: "absolute",
@@ -207,8 +198,7 @@ export default function Navbar() {
               padding: "16px",
               borderBottom: "1px solid var(--border)",
             }}
-          >
-          </div>
+          ></div>
 
           <div
             style={{

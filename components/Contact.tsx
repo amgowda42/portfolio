@@ -30,7 +30,6 @@ export default function Contact() {
           textAlign: "center",
         }}
       >
-        {/* Label */}
         <span
           style={{
             display: "inline-block",
@@ -73,8 +72,6 @@ export default function Contact() {
           Have a project in mind or just want to say hello? My inbox is always
           open.
         </p>
-
-        {/* Email button */}
         <a
           href="mailto:annappag2020@gmail.com"
           style={{
@@ -104,8 +101,6 @@ export default function Contact() {
           <Mail size={16} strokeWidth={2} />
           annappag2020@gmail.com
         </a>
-
-        {/* Social icons */}
         <div
           style={{
             display: "flex",
@@ -151,18 +146,6 @@ export default function Contact() {
             </a>
           ))}
         </div>
-
-        {/* Footer note */}
-        <p
-          style={{
-            marginTop: "48px",
-            fontSize: "0.75rem",
-            fontFamily: "var(--font-mono)",
-            color: "var(--text-dim)",
-          }}
-        >
-          Built with Next.js · Deployed on Vercel
-        </p>
       </div>
     </section>
   );

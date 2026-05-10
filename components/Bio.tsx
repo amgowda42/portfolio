@@ -77,7 +77,6 @@ export default function Bio() {
         paddingTop: "40px",
       }}
     >
-      {/* Grid background */}
       <div
         aria-hidden
         style={{
@@ -91,8 +90,6 @@ export default function Bio() {
             "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)",
         }}
       />
-
-      {/* Floating code tokens */}
       {floatingTokens.map((text, i) => (
         <span
           key={i}
@@ -132,11 +129,9 @@ export default function Bio() {
           }}
           className="bio-grid"
         >
-          {/* Left — text content */}
           <div
             style={{ display: "flex", flexDirection: "column", gap: "28px" }}
           >
-            {/* Badge */}
             <div
               style={{
                 display: "flex",
@@ -184,7 +179,6 @@ export default function Bio() {
               </span>
             </div>
 
-            {/* Name */}
             <div>
               <h1
                 style={{
@@ -212,7 +206,6 @@ export default function Bio() {
               </h1>
             </div>
 
-            {/* Description */}
             <p
               style={{
                 fontSize: "1rem",
@@ -237,7 +230,6 @@ export default function Bio() {
               — novels, articles, and theatre.
             </p>
 
-            {/* Socials */}
             <div
               style={{ display: "flex", flexDirection: "column", gap: "4px" }}
             >
@@ -287,7 +279,6 @@ export default function Bio() {
             </div>
           </div>
 
-          {/* Right — photo */}
           <div
             style={{
               position: "relative",
@@ -297,7 +288,6 @@ export default function Bio() {
             }}
             className="bio-photo"
           >
-            {/* Corner brackets */}
             <div
               aria-hidden
               style={{
@@ -327,7 +317,6 @@ export default function Bio() {
               }}
             />
 
-            {/* Glow */}
             <div
               aria-hidden
               style={{
@@ -342,7 +331,6 @@ export default function Bio() {
               }}
             />
 
-            {/* Image */}
             <div
               style={{
                 position: "relative",
@@ -363,7 +351,6 @@ export default function Bio() {
                 style={{ objectFit: "cover" }}
               />
 
-              {/* Bottom label */}
               <div
                 style={{
                   position: "absolute",
@@ -393,7 +380,6 @@ export default function Bio() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div
         aria-hidden
         style={{

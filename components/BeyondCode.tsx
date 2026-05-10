@@ -1,3 +1,5 @@
+"use client";
+
 const items = [
   {
     emoji: "🌿",
@@ -27,7 +29,6 @@ export default function BeyondCode() {
       }}
     >
       <div style={{ maxWidth: "720px", margin: "0 auto", padding: "0 24px" }}>
-        {/* Header */}
         <div style={{ marginBottom: "40px" }}>
           <span
             style={{
@@ -60,7 +61,6 @@ export default function BeyondCode() {
           </h2>
         </div>
 
-        {/* Items */}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           {items.map((item, i) => (
             <div

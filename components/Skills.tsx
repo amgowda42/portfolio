@@ -97,7 +97,6 @@ export default function Skills() {
       }}
     >
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }}>
-        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "52px" }}>
           <span
             style={{
@@ -138,8 +137,6 @@ export default function Skills() {
             }}
           />
         </div>
-
-        {/* Grid */}
         <div
           style={{
             display: "grid",
@@ -178,7 +175,6 @@ export default function Skills() {
                   e.currentTarget.style.boxShadow = "none";
                 }}
               >
-                {/* Icon */}
                 <div
                   style={{
                     width: "44px",
@@ -195,7 +191,6 @@ export default function Skills() {
                   <Icon size={22} strokeWidth={1.8} color={skill.accent} />
                 </div>
 
-                {/* Text */}
                 <div>
                   <p
                     style={{

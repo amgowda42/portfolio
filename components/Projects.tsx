@@ -75,7 +75,6 @@ export default function Projects() {
       }}
     >
       <div style={{ maxWidth: "1024px", margin: "0 auto", padding: "0 24px" }}>
-        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "52px" }}>
           <span
             style={{
@@ -117,7 +116,6 @@ export default function Projects() {
           />
         </div>
 
-        {/* Grid */}
         <div
           style={{
             display: "grid",
@@ -156,7 +154,6 @@ export default function Projects() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              {/* Top accent line */}
               <div
                 style={{
                   position: "absolute",
@@ -169,7 +166,6 @@ export default function Projects() {
                 }}
               />
 
-              {/* Arrow */}
               <div
                 style={{
                   position: "absolute",
@@ -192,7 +188,6 @@ export default function Projects() {
                 />
               </div>
 
-              {/* Title */}
               <div style={{ marginBottom: "16px", paddingRight: "40px" }}>
                 <h3
                   style={{
@@ -218,7 +213,6 @@ export default function Projects() {
                 </p>
               </div>
 
-              {/* Points */}
               <ul
                 style={{
                   listStyle: "none",
@@ -257,7 +251,6 @@ export default function Projects() {
                 ))}
               </ul>
 
-              {/* Tags */}
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                 {project.tags.map((tag, i) => (
                   <span

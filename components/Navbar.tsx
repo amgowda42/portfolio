@@ -14,10 +14,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -25,14 +22,9 @@ export default function Navbar() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      const offsetPosition =
+        element.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
   };
@@ -40,97 +32,246 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white backdrop-blur-md shadow-sm border-b border-gray-200"
-            : "bg-white backdrop-blur-sm"
-        }`}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          transition: "all 0.3s ease",
+          background: isScrolled ? "rgba(10, 10, 15, 0.85)" : "transparent",
+          backdropFilter: isScrolled ? "blur(16px)" : "none",
+          borderBottom: isScrolled
+            ? "1px solid var(--border)"
+            : "1px solid transparent",
+        }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 md:h-20">
-            <div className="shrink-0">
-              <button
-                onClick={() => scrollToSection("about")}
-                className="text-xl md:text-2xl font-bold bg-linear-to-r from-indigo-600 to-indigo-700 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+        <div
+          style={{ maxWidth: "1024px", margin: "0 auto", padding: "0 24px" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              height: "64px",
+            }}
+          >
+            {/* Logo */}
+            <button
+              onClick={() => scrollToSection("about")}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <span
+                style={{
+                  width: "28px",
+                  height: "28px",
+                  borderRadius: "8px",
+                  background: "var(--accent)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  color: "#fff",
+                  fontFamily: "var(--font-mono)",
+                }}
               >
-                Portfolio
-              </button>
-            </div>
+                AG
+              </span>
+              <span
+                style={{
+                  fontSize: "0.95rem",
+                  fontWeight: 600,
+                  color: "var(--text-primary)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Annappa Gowda
+              </span>
+            </button>
 
-            <div className="hidden md:flex items-center space-x-8">
+            {/* Desktop nav */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+              className="hidden-mobile"
+            >
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-base font-medium text-gray-900 hover:text-indigo-600 transition-colors relative group cursor-pointer"
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "6px 14px",
+                    borderRadius: "8px",
+                    fontSize: "0.875rem",
+                    fontWeight: 500,
+                    color: "var(--text-muted)",
+                    transition: "color 0.2s, background 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--text-primary)";
+                    e.currentTarget.style.background = "var(--bg-surface)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--text-muted)";
+                    e.currentTarget.style.background = "transparent";
+                  }}
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full" />
                 </button>
               ))}
             </div>
 
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 text-gray-700 hover:text-indigo-600 transition-colors"
-                aria-label="Toggle menu"
-              >
-                {isMobileMenuOpen ? (
-                  <X size={24} strokeWidth={2} />
-                ) : (
-                  <Menu size={24} strokeWidth={2} />
-                )}
-              </button>
-            </div>
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              style={{
+                background: "none",
+                border: "1px solid var(--border)",
+                borderRadius: "8px",
+                padding: "6px",
+                cursor: "pointer",
+                color: "var(--text-muted)",
+                display: "none",
+              }}
+              className="show-mobile"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X size={20} strokeWidth={2} />
+              ) : (
+                <Menu size={20} strokeWidth={2} />
+              )}
+            </button>
           </div>
         </div>
       </nav>
 
+      {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
-          isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 40,
+          pointerEvents: isMobileMenuOpen ? "auto" : "none",
+        }}
       >
+        {/* Backdrop */}
         <div
-          className={`absolute inset-0  backdrop-blur-sm transition-opacity duration-300 ${
-            isMobileMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
           onClick={() => setIsMobileMenuOpen(false)}
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(0,0,0,0.6)",
+            backdropFilter: "blur(4px)",
+            opacity: isMobileMenuOpen ? 1 : 0,
+            transition: "opacity 0.3s",
+          }}
         />
 
+        {/* Drawer */}
         <div
-          className={`absolute top-0 right-0 w-64 h-full bg-white shadow-2xl transition-transform duration-300 ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "260px",
+            height: "100%",
+            background: "var(--bg-surface)",
+            borderLeft: "1px solid var(--border)",
+            transform: isMobileMenuOpen ? "translateX(0)" : "translateX(100%)",
+            transition: "transform 0.3s ease",
+            display: "flex",
+            flexDirection: "column",
+          }}
         >
-          <div className="flex flex-col h-full">
-            <div className="flex justify-end p-4">
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-gray-700 hover:text-indigo-600 transition-colors"
-                aria-label="Close menu"
-              >
-                <X size={24} strokeWidth={2} />
-              </button>
-            </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              padding: "16px",
+              borderBottom: "1px solid var(--border)",
+            }}
+          >
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                color: "var(--text-muted)",
+                padding: "4px",
+              }}
+            >
+              <X size={20} />
+            </button>
+          </div>
 
-            <div className="flex flex-col p-6 space-y-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all duration-200"
-                >
-                  {item.name}
-                </button>
-              ))}
-            </div>
+          <div
+            style={{
+              padding: "16px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "4px",
+            }}
+          >
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  textAlign: "left",
+                  padding: "12px 16px",
+                  borderRadius: "10px",
+                  fontSize: "0.95rem",
+                  fontWeight: 500,
+                  color: "var(--text-muted)",
+                  transition: "color 0.2s, background 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--text-primary)";
+                  e.currentTarget.style.background = "var(--bg-elevated)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "var(--text-muted)";
+                  e.currentTarget.style.background = "transparent";
+                }}
+              >
+                {item.name}
+              </button>
+            ))}
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .hidden-mobile {
+            display: none !important;
+          }
+          .show-mobile {
+            display: flex !important;
+          }
+        }
+      `}</style>
     </>
   );
 }

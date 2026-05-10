@@ -1,82 +1,251 @@
+"use client";
+
 import { Code2, Server, Sparkles } from "lucide-react";
 
 export default function AboutExpertise() {
   return (
-    <section className="bg-white py-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">
-            My Key Areas of Impact
-          </h3>
+    <section
+      style={{
+        background: "var(--bg-primary)",
+        padding: "80px 0",
+        borderTop: "1px solid var(--border-subtle)",
+      }}
+    >
+      <div style={{ maxWidth: "1024px", margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ textAlign: "center", marginBottom: "56px" }}>
+          <span
+            style={{
+              display: "inline-block",
+              fontSize: "12px",
+              fontWeight: 500,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "var(--accent-light)",
+              background: "var(--accent-dim)",
+              padding: "4px 14px",
+              borderRadius: "999px",
+              border: "1px solid #6366f130",
+              marginBottom: "16px",
+            }}
+          >
+            Expertise
+          </span>
+          <h2
+            style={{
+              fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+              fontWeight: 600,
+              color: "var(--text-primary)",
+              margin: 0,
+            }}
+          >
+            Key Areas of Impact
+          </h2>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-indigo-200">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-cyan-500 to-blue-600 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Code2 size={24} strokeWidth={2} />
-                </div>
-                <h4 className="text-2xl font-bold text-gray-900">Front End</h4>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "20px",
+            marginBottom: "24px",
+          }}
+        >
+          <div
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "16px",
+              padding: "32px",
+              transition: "border-color 0.2s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.borderColor = "#6366f150")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.borderColor = "var(--border)")
+            }
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                marginBottom: "20px",
+              }}
+            >
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "12px",
+                  background: "linear-gradient(135deg, #06b6d4, #6366f1)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <Code2 size={20} color="#fff" strokeWidth={2} />
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                I come up with robust solutions using{" "}
-                <span className="font-semibold text-blue-600">TypeScript</span>{" "}
-                and{" "}
-                <span className="font-semibold text-yellow-600">
-                  JavaScript
-                </span>
-                . I focus on{" "}
-                <span className="font-semibold">front-end architecture</span>,{" "}
-                <span className="font-semibold">clean UI design</span>,{" "}
-                <span className="font-semibold">high-quality CSS</span>, and
-                efficient API handling with{" "}
-                <span className="font-semibold text-purple-600">
-                  Redux Toolkit
-                </span>
-                .
-              </p>
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 600,
+                  color: "var(--text-primary)",
+                  margin: 0,
+                }}
+              >
+                Front End
+              </h3>
             </div>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                lineHeight: 1.75,
+                margin: 0,
+                fontSize: "0.925rem",
+              }}
+            >
+              Building robust solutions using{" "}
+              <Highlight color="var(--accent-light)">TypeScript</Highlight> and{" "}
+              <Highlight color="#facc15">JavaScript</Highlight>. Focused on{" "}
+              <strong style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                front-end architecture
+              </strong>
+              ,{" "}
+              <strong style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                clean UI design
+              </strong>
+              , and efficient API handling with{" "}
+              <Highlight color="#a78bfa">Redux Toolkit</Highlight>.
+            </p>
+          </div>
 
-            <div className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-green-200">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-green-500 to-emerald-600 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Server size={24} strokeWidth={2} />
-                </div>
-                <h4 className="text-2xl font-bold text-gray-900">Back End</h4>
+          <div
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "16px",
+              padding: "32px",
+              transition: "border-color 0.2s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.borderColor = "#10b98150")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.borderColor = "var(--border)")
+            }
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                marginBottom: "20px",
+              }}
+            >
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "12px",
+                  background: "linear-gradient(135deg, #10b981, #06b6d4)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <Server size={20} color="#fff" strokeWidth={2} />
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                I work with{" "}
-                <span className="font-semibold text-green-600">Node.js</span>,{" "}
-                <span className="font-semibold text-gray-700">Express.js</span>,
-                and{" "}
-                <span className="font-semibold text-green-600">MongoDB</span>,
-                emphasizing{" "}
-                <span className="font-semibold">proper data modeling</span> and{" "}
-                <span className="font-semibold">maintainable architecture</span>
-                .
-              </p>
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 600,
+                  color: "var(--text-primary)",
+                  margin: 0,
+                }}
+              >
+                Back End
+              </h3>
             </div>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                lineHeight: 1.75,
+                margin: 0,
+                fontSize: "0.925rem",
+              }}
+            >
+              Working with <Highlight color="#4ade80">Node.js</Highlight>,{" "}
+              <Highlight color="var(--text-muted)">Express.js</Highlight>, and{" "}
+              <Highlight color="#4ade80">MongoDB</Highlight> — emphasizing{" "}
+              <strong style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                proper data modeling
+              </strong>{" "}
+              and{" "}
+              <strong style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                maintainable architecture
+              </strong>
+              .
+            </p>
           </div>
         </div>
 
-        <div className="relative bg-linear-to-br from-indigo-50 to-blue-50 rounded-2xl p-8 border border-indigo-100">
-          <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-indigo-500 to-indigo-600 text-white shrink-0 mt-1">
-              <Sparkles size={20} strokeWidth={2} />
-            </div>
-            <div className="flex-1">
-              <p className="text-gray-800 leading-relaxed">
-                I keep myself updated with the latest technologies. Please
-                connect with me for any{" "}
-                <span className="font-semibold text-indigo-600">
-                  front-end solutions
-                </span>
-                , as I&apos;m currently more specialized in that, while also
-                extending my expertise to the back end.
-              </p>
-            </div>
+        <div
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border)",
+            borderLeft: "3px solid var(--accent)",
+            borderRadius: "12px",
+            padding: "20px 24px",
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "14px",
+          }}
+        >
+          <div
+            style={{
+              width: "34px",
+              height: "34px",
+              borderRadius: "50%",
+              background: "var(--accent-dim)",
+              border: "1px solid #6366f130",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
+            }}
+          >
+            <Sparkles size={16} color="var(--accent-light)" strokeWidth={2} />
           </div>
+          <p
+            style={{
+              color: "var(--text-muted)",
+              lineHeight: 1.75,
+              margin: 0,
+              fontSize: "0.925rem",
+            }}
+          >
+            I stay updated with the latest technologies. Connect with me for any{" "}
+            <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
+              front-end solutions
+            </span>{" "}
+            — currently more specialized there while actively expanding into
+            back-end development.
+          </p>
         </div>
       </div>
     </section>
   );
+}
+
+function Highlight({
+  children,
+  color,
+}: {
+  children: React.ReactNode;
+  color: string;
+}) {
+  return <span style={{ color, fontWeight: 500 }}>{children}</span>;
 }

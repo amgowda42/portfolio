@@ -1,114 +1,294 @@
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
 
-const projects = [
+interface Project {
+  id: number;
+  github: string;
+  title: string;
+  subtitle: string;
+  points: string[];
+  tags: string[];
+  accent: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     github: "https://github.com/amgowda42/vehiclete.git",
-    title: "Vehiclete - Complete Vehicle Platform",
+    title: "Vehiclete",
+    subtitle: "Complete Vehicle Platform",
     points: [
       "Unified platform for bikes, cars, and cycles with detailed specifications",
       "View pre-calculated EMI details for all vehicles",
       "Book test drive demos directly through the platform",
       "Comprehensive vehicle details, mileage, and pricing overview",
     ],
-    tags: ["React.Js", "Node.Js", "MongoDB"],
+    tags: ["React.js", "Node.js", "MongoDB"],
+    accent: "#6366f1",
   },
   {
     id: 2,
-    title: "Goal Setter",
     github: "https://github.com/amgowda42/Goal_Setter.git",
+    title: "Goal Setter",
+    subtitle: "Progress Tracking App",
     points: [
-      "A MERN stack application built to help users set goals, edit, and delete them with ease.",
-      "Easy to track their progress",
+      "MERN stack application to set, edit, and delete goals with ease",
+      "Track progress visually and stay on top of milestones",
     ],
-    tags: ["React.Js", "Node.Js", "MongoDB"],
+    tags: ["React.js", "Node.js", "MongoDB"],
+    accent: "#22d3ee",
   },
   {
     id: 3,
     github: "https://github.com/amgowda42/Hey-Food.git",
-    title: "Hey-Food - Food Ordering Platform",
+    title: "Hey-Food",
+    subtitle: "Food Ordering Platform",
     points: [
       "Food ordering platform using live Swiggy GraphQL APIs",
-      "Integrated Redux Toolkit for efficient cart state management",
+      "Redux Toolkit for efficient cart state management",
       "Dynamic restaurant and menu data fetching",
-      "Seamless add-to-cart functionality with persistent store",
+      "Seamless add-to-cart with persistent store",
     ],
-    tags: ["React.Js", "Redux Toolkit"],
+    tags: ["React.js", "Redux Toolkit"],
+    accent: "#f97316",
   },
   {
     id: 4,
     github: "https://github.com/amgowda42/portfolio.git",
     title: "Personal Portfolio",
-    points: ["Modern and responsive design showcasing projects and skills"],
-    tags: ["Next.Js", "Vercel"],
+    subtitle: "This site",
+    points: ["Modern dark-themed portfolio showcasing projects and skills"],
+    tags: ["Next.js", "Vercel"],
+    accent: "#4ade80",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-white py-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+    <section
+      id="projects"
+      style={{
+        background: "var(--bg-primary)",
+        padding: "80px 0",
+        borderTop: "1px solid var(--border-subtle)",
+      }}
+    >
+      <div style={{ maxWidth: "1024px", margin: "0 auto", padding: "0 24px" }}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: "52px" }}>
+          <span
+            style={{
+              display: "inline-block",
+              fontSize: "11px",
+              fontFamily: "var(--font-mono)",
+              fontWeight: 500,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "var(--accent-light)",
+              background: "var(--accent-dim)",
+              padding: "4px 14px",
+              borderRadius: "999px",
+              border: "1px solid #6366f130",
+              marginBottom: "16px",
+            }}
+          >
+            Work
+          </span>
+          <h2
+            style={{
+              fontSize: "clamp(1.6rem, 3vw, 2.1rem)",
+              fontWeight: 700,
+              color: "var(--text-primary)",
+              margin: "0 0 16px",
+              letterSpacing: "-0.02em",
+            }}
+          >
             Featured Projects
           </h2>
+          <div
+            style={{
+              width: "40px",
+              height: "3px",
+              borderRadius: "999px",
+              background: "linear-gradient(90deg, var(--accent), var(--cyan))",
+              margin: "0 auto",
+            }}
+          />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        {/* Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "16px",
+          }}
+          className="projects-grid"
+        >
           {projects.map((project) => (
             <a
               key={project.id}
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative cursor-pointer rounded-3xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:-translate-y-2 hover:border-indigo-400 hover:shadow-[0_20px_60px_-15px_rgba(79,70,229,0.3)] active:scale-[0.98] md:active:scale-100 flex flex-col h-full"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                padding: "28px",
+                borderRadius: "16px",
+                background: "var(--bg-surface)",
+                border: "1px solid var(--border)",
+                textDecoration: "none",
+                transition:
+                  "border-color 0.25s, transform 0.25s, box-shadow 0.25s",
+                position: "relative",
+                overflow: "hidden",
+              }}
+              onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.currentTarget.style.borderColor = project.accent + "50";
+                e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.boxShadow = `0 20px 48px ${project.accent}18`;
+              }}
+              onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
             >
-              <div className="absolute right-6 top-6 transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 md:translate-x-2 md:-translate-y-2 md:group-hover:translate-x-0 md:group-hover:translate-y-0">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-50 md:bg-transparent group-hover:bg-indigo-100 transition-colors">
-                  <ArrowUpRight
-                    size={24}
-                    className="text-indigo-600"
-                    strokeWidth={2.5}
-                  />
-                </div>
+              {/* Top accent line */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: "2px",
+                  background: `linear-gradient(90deg, ${project.accent}, transparent)`,
+                  opacity: 0.6,
+                }}
+              />
+
+              {/* Arrow */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "20px",
+                  right: "20px",
+                  width: "32px",
+                  height: "32px",
+                  borderRadius: "8px",
+                  background: "var(--bg-elevated)",
+                  border: "1px solid var(--border)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <ArrowUpRight
+                  size={16}
+                  color="var(--text-dim)"
+                  strokeWidth={2}
+                />
               </div>
 
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-indigo-600 transition-colors duration-300 pr-12">
+              {/* Title */}
+              <div style={{ marginBottom: "16px", paddingRight: "40px" }}>
+                <h3
+                  style={{
+                    fontSize: "1.05rem",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    margin: "0 0 4px",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
                   {project.title}
                 </h3>
-
-                <ul className="space-y-3 mb-6">
-                  {project.points.map((point, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-gray-600"
-                    >
-                      <span className="text-indigo-600 font-bold mt-1 shrink-0">
-                        •
-                      </span>
-                      <span className="text-sm leading-relaxed">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-full border border-indigo-100 transition-all duration-300 group-hover:bg-indigo-100 group-hover:border-indigo-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <p
+                  style={{
+                    fontSize: "0.78rem",
+                    fontFamily: "var(--font-mono)",
+                    color: project.accent,
+                    margin: 0,
+                    opacity: 0.8,
+                  }}
+                >
+                  {project.subtitle}
+                </p>
               </div>
-              <div className="md:hidden mt-4 pt-4 border-t border-gray-100 flex items-center justify-end gap-2 text-sm text-indigo-600 font-medium">
-                <span>View on GitHub</span>
-                <ArrowUpRight size={16} strokeWidth={2.5} />
+
+              {/* Points */}
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: "0 0 20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "8px",
+                  flex: 1,
+                }}
+              >
+                {project.points.map((point, i) => (
+                  <li
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: "8px",
+                      fontSize: "0.845rem",
+                      color: "var(--text-muted)",
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: project.accent,
+                        flexShrink: 0,
+                        marginTop: "1px",
+                        fontSize: "10px",
+                      }}
+                    >
+                      ▸
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Tags */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                {project.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      fontSize: "0.7rem",
+                      fontFamily: "var(--font-mono)",
+                      fontWeight: 500,
+                      padding: "3px 10px",
+                      borderRadius: "999px",
+                      background: project.accent + "15",
+                      color: project.accent,
+                      border: `1px solid ${project.accent}30`,
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </a>
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 640px) {
+          .projects-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

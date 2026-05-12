@@ -84,6 +84,20 @@ const skills = [
     accent: "#fb923c",
     glow: "#fb923c20",
   },
+  {
+    name: "FastAPI",
+    sub: "Python Framework",
+    icon: Zap,
+    accent: "#38bdf8",
+    glow: "#38bdf820",
+  },
+  {
+    name: "Docker",
+    sub: "Containerization",
+    icon: Package,
+    accent: "#2496ed",
+    glow: "#2496ed20",
+  },
 ];
 
 export default function Skills() {

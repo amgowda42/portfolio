@@ -92,14 +92,21 @@ function ExperienceCard({
   isLast: boolean;
 }) {
   return (
-    <div style={{ display: "flex", gap: "0", position: "relative" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "0",
+        position: "relative",
+        padding: "0 4px",
+      }}
+    >
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           flexShrink: 0,
-          width: "44px",
+          width: "30px",
           paddingTop: "6px",
         }}
       >
@@ -108,7 +115,7 @@ function ExperienceCard({
             <span
               style={{
                 position: "absolute",
-                inset: "-4px",
+                inset: "-8px",
                 borderRadius: "50%",
                 background: "#4ade8040",
                 animation: "ping 2s ease-in-out infinite",

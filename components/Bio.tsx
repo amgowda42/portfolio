@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { Github, Twitter, Linkedin, ArrowUpRight } from "lucide-react";
+import { Github, Twitter, Linkedin, PenLine } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 const socials = [
@@ -115,52 +114,241 @@ export default function Bio() {
         style={{
           position: "relative",
           width: "100%",
-          maxWidth: "1024px",
+          maxWidth: "720px",
           margin: "0 auto",
           padding: "80px 24px",
         }}
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: "64px",
-            alignItems: "center",
-          }}
-          className="bio-grid"
-        >
+        {/* ── SINGLE COLUMN ── */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
           <div
-            style={{ display: "flex", flexDirection: "column", gap: "28px" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              flexWrap: "wrap",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "11px",
+                fontFamily: "var(--font-mono)",
+                fontWeight: 500,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--accent-light)",
+                background: "var(--accent-dim)",
+                border: "1px solid #6366f128",
+                padding: "4px 12px",
+                borderRadius: "999px",
+              }}
+            >
+              Full Stack Developer
+            </span>
+
+            <span style={{ color: "var(--border)", fontSize: "12px" }}>·</span>
+
+            <span
+              style={{
+                fontSize: "11px",
+                fontFamily: "var(--font-mono)",
+                fontWeight: 500,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "#a78bfa",
+                background: "#a78bfa15",
+                border: "1px solid #a78bfa28",
+                padding: "4px 12px",
+                borderRadius: "999px",
+              }}
+            >
+              Wordsmith
+            </span>
+          </div>
+
+          <div>
+            <h1
+              style={{
+                fontSize: "clamp(2.8rem, 6vw, 4.5rem)",
+                fontWeight: 800,
+                lineHeight: 1.05,
+                letterSpacing: "-0.03em",
+                color: "var(--text-primary)",
+                margin: 0,
+              }}
+            >
+              Annappa
+              <br />
+              <span
+                style={{
+                  background:
+                    "linear-gradient(135deg, #818cf8 0%, #6366f1 40%, #06b6d4 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Gowda
+              </span>
+            </h1>
+          </div>
+
+          {/* ── BIO POINTS ── */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+              maxWidth: "560px",
+            }}
+          >
+            {[
+              <>
+                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                  Full Stack Developer
+                </span>{" "}
+                focused on{" "}
+                <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
+                  TypeScript &amp; JavaScript
+                </span>{" "}
+                for front-end and{" "}
+                <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
+                  Node.js &amp; Python
+                </span>{" "}
+                for robust backends.
+              </>,
+              <>
+                Specializes in{" "}
+                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                  clean API design
+                </span>
+                , scalable architecture, and maintainable codebases.
+              </>,
+              <>
+                Infrastructure across{" "}
+                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                  AWS EC2, Vercel, Nginx, Docker &amp; GitHub Actions CI/CD
+                </span>{" "}
+                — with{" "}
+                <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
+                  Redis
+                </span>{" "}
+                for performance and scaling.
+              </>,
+              <>
+                Actively exploring{" "}
+                <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
+                  AI-driven development
+                </span>{" "}
+                — agents, modern workflows, and{" "}
+                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                  vibe coding
+                </span>{" "}
+                to build faster and smarter.
+              </>,
+            ].map((point, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "12px",
+                }}
+              >
+                <span
+                  style={{
+                    marginTop: "8px",
+                    width: "4px",
+                    height: "4px",
+                    borderRadius: "50%",
+                    background: "var(--accent)",
+                    flexShrink: 0,
+                    opacity: 0.7,
+                  }}
+                />
+                <p
+                  style={{
+                    fontSize: "0.95rem",
+                    color: "var(--text-muted)",
+                    lineHeight: 1.75,
+                    margin: 0,
+                  }}
+                >
+                  {point}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* ── SOCIALS ── */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "4px",
+              padding: "8px",
+              borderRadius: "12px",
+              border: "1px solid var(--border)",
+              background: "var(--bg-surface)",
+              width: "fit-content",
+            }}
+          >
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "8px",
+                  border: "1px solid transparent",
+                  textDecoration: "none",
+                  transition: "all 0.2s",
+                  color: "var(--text-dim)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--bg-primary)";
+                  e.currentTarget.style.borderColor = "var(--border)";
+                  e.currentTarget.style.color = "var(--accent-light)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "transparent";
+                  e.currentTarget.style.color = "var(--text-dim)";
+                }}
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+
+          {/* ── WRITING SECTION ── */}
+          <div
+            style={{
+              padding: "20px 24px",
+              borderRadius: "14px",
+              border: "1px solid #a78bfa28",
+              background: "#a78bfa08",
+              maxWidth: "560px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+            }}
           >
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "8px",
-                flexWrap: "wrap",
               }}
             >
-              <span
-                style={{
-                  fontSize: "11px",
-                  fontFamily: "var(--font-mono)",
-                  fontWeight: 500,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--accent-light)",
-                  background: "var(--accent-dim)",
-                  border: "1px solid #6366f128",
-                  padding: "4px 12px",
-                  borderRadius: "999px",
-                }}
-              >
-                Full Stack Developer
-              </span>
-
-              <span style={{ color: "var(--border)", fontSize: "12px" }}>
-                ·
-              </span>
-
+              <PenLine size={14} style={{ color: "#a78bfa" }} />
               <span
                 style={{
                   fontSize: "11px",
@@ -169,213 +357,26 @@ export default function Bio() {
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "#a78bfa",
-                  background: "#a78bfa15",
-                  border: "1px solid #a78bfa28",
-                  padding: "4px 12px",
-                  borderRadius: "999px",
                 }}
               >
-                Wordsmith
+                Beyond the Code
               </span>
             </div>
-
-            <div>
-              <h1
-                style={{
-                  fontSize: "clamp(2.8rem, 6vw, 4.5rem)",
-                  fontWeight: 800,
-                  lineHeight: 1.05,
-                  letterSpacing: "-0.03em",
-                  color: "var(--text-primary)",
-                  margin: 0,
-                }}
-              >
-                Annappa
-                <br />
-                <span
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #818cf8 0%, #6366f1 40%, #06b6d4 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  Gowda
-                </span>
-              </h1>
-            </div>
-
             <p
               style={{
-                fontSize: "1rem",
+                fontSize: "0.9rem",
                 color: "var(--text-muted)",
-                lineHeight: 1.8,
-                maxWidth: "480px",
+                lineHeight: 1.75,
                 margin: 0,
               }}
             >
-              Crafting{" "}
-              <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
-                elegant web applications
-              </span>{" "}
-              that blend form and function. I turn ideas into powerful,{" "}
-              <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
-                full-stack digital experiences
-              </span>
-              . Also a{" "}
+              Also a{" "}
               <span style={{ color: "#a78bfa", fontWeight: 500 }}>
                 hobbyist wordsmith
               </span>{" "}
-              — novels, articles, and theatre.
+              — I write short stories, articles, and theatre. Storytelling is
+              how I make sense of the world when code can&apos;t.
             </p>
-
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "4px" }}
-            >
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    padding: "8px 12px",
-                    borderRadius: "10px",
-                    border: "1px solid transparent",
-                    textDecoration: "none",
-                    transition: "all 0.2s",
-                    width: "fit-content",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--bg-surface)";
-                    e.currentTarget.style.borderColor = "var(--border)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.borderColor = "transparent";
-                  }}
-                >
-                  <span style={{ color: "var(--text-dim)" }}>{s.icon}</span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.8rem",
-                      color: "var(--text-muted)",
-                    }}
-                  >
-                    {s.handle}
-                  </span>
-                  <ArrowUpRight
-                    size={12}
-                    style={{ color: "var(--accent)", opacity: 0.6 }}
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div
-            style={{
-              position: "relative",
-              flexShrink: 0,
-              display: "flex", // ✅ add
-              justifyContent: "center", // ✅ add
-            }}
-            className="bio-photo"
-          >
-            <div
-              aria-hidden
-              style={{
-                position: "absolute",
-                top: "-12px",
-                left: "-12px",
-                width: "24px",
-                height: "24px",
-                borderTop: "2px solid var(--accent)",
-                borderLeft: "2px solid var(--accent)",
-                borderRadius: "2px 0 0 0",
-                opacity: 0.6,
-              }}
-            />
-            <div
-              aria-hidden
-              style={{
-                position: "absolute",
-                bottom: "-12px",
-                right: "-12px",
-                width: "24px",
-                height: "24px",
-                borderBottom: "2px solid var(--accent)",
-                borderRight: "2px solid var(--accent)",
-                borderRadius: "0 0 2px 0",
-                opacity: 0.6,
-              }}
-            />
-
-            <div
-              aria-hidden
-              style={{
-                position: "absolute",
-                inset: "-20px",
-                background:
-                  "radial-gradient(ellipse, #6366f122 0%, transparent 70%)",
-                borderRadius: "20px",
-                transform: `translate(${mousePos.x * 0.04}px, ${mousePos.y * 0.04}px)`,
-                transition: "transform 0.4s ease-out",
-                pointerEvents: "none",
-              }}
-            />
-
-            <div
-              style={{
-                position: "relative",
-                width: "280px",
-                height: "340px",
-                borderRadius: "16px",
-                overflow: "hidden",
-                border: "1px solid var(--border)",
-                transform: `perspective(1000px) rotateY(${mousePos.x * 0.012}deg) rotateX(${-mousePos.y * 0.012}deg)`,
-                transition: "transform 0.3s ease-out",
-              }}
-            >
-              <Image
-                src="/image_1.jpg"
-                alt="Annappa Gowda"
-                fill
-                priority
-                style={{ objectFit: "cover" }}
-              />
-
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  padding: "12px 16px",
-                  background: "rgba(10, 10, 15, 0.75)",
-                  backdropFilter: "blur(8px)",
-                  borderTop: "1px solid var(--border)",
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "11px",
-                    color: "var(--text-dim)",
-                    margin: 0,
-                  }}
-                >
-                  <span style={{ color: "var(--accent-light)" }}>~/</span>{" "}
-                  annappa-gowda
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -435,11 +436,6 @@ export default function Bio() {
           }
           50% {
             opacity: 0.8;
-          }
-        }
-        @media (max-width: 768px) {
-          .bio-grid {
-            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

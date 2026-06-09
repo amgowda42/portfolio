@@ -346,61 +346,59 @@ export default function Experience() {
       id="experience"
       style={{
         background: "var(--bg-primary)",
-        padding: "80px 0",
+        padding: "80px 10px",
         borderTop: "1px solid var(--border-subtle)",
       }}
     >
-      <div style={{ maxWidth: "1024px", margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ textAlign: "center", marginBottom: "56px" }}>
-          <span
-            style={{
-              display: "inline-block",
-              fontSize: "12px",
-              fontWeight: 500,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "var(--accent-light)",
-              background: "var(--accent-dim)",
-              padding: "4px 14px",
-              borderRadius: "999px",
-              border: "1px solid #6366f130",
-              marginBottom: "16px",
-              fontFamily: "var(--font-mono)",
-            }}
-          >
-            Career
-          </span>
-          <h2
-            style={{
-              fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
-              fontWeight: 600,
-              color: "var(--text-primary)",
-              margin: 0,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Work Experience
-          </h2>
-          <p
-            style={{
-              fontSize: "0.925rem",
-              color: "var(--text-muted)",
-              marginTop: "10px",
-            }}
-          >
-            Building products people actually use.
-          </p>
-        </div>
+      <div style={{ textAlign: "center", marginBottom: "56px" }}>
+        <span
+          style={{
+            display: "inline-block",
+            fontSize: "12px",
+            fontWeight: 500,
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "var(--accent-light)",
+            background: "var(--accent-dim)",
+            padding: "4px 14px",
+            borderRadius: "999px",
+            border: "1px solid #6366f130",
+            marginBottom: "16px",
+            fontFamily: "var(--font-mono)",
+          }}
+        >
+          Career
+        </span>
+        <h2
+          style={{
+            fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+            fontWeight: 600,
+            color: "var(--text-primary)",
+            margin: 0,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Work Experience
+        </h2>
+        <p
+          style={{
+            fontSize: "0.925rem",
+            color: "var(--text-muted)",
+            marginTop: "10px",
+          }}
+        >
+          Building products people actually use.
+        </p>
+      </div>
 
-        <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-          {[...experiences].reverse().map((exp, i) => (
-            <ExperienceCard
-              key={exp.id}
-              exp={exp}
-              isLast={i === experiences.length - 1}
-            />
-          ))}
-        </div>
+      <div style={{ margin: "auto" }}>
+        {[...experiences].reverse().map((exp, i) => (
+          <ExperienceCard
+            key={exp.id}
+            exp={exp}
+            isLast={i === experiences.length - 1}
+          />
+        ))}
       </div>
 
       <style jsx>{`

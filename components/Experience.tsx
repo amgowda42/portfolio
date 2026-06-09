@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Calendar } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import { experiences } from "@/lib/data";
 
 function SkillChip({ label }: { label: string }) {
@@ -42,15 +42,15 @@ function ProjectBlock({
         border: "1px solid var(--border-subtle)",
         borderLeft: `2px solid ${accent}`,
         borderRadius: "10px",
-        padding: "16px 20px",
+        padding: "14px 16px",
       }}
     >
       <p
         style={{
-          fontSize: "0.8rem",
+          fontSize: "0.78rem",
           fontWeight: 600,
           color: accent,
-          margin: "0 0 10px 0",
+          margin: "0 0 8px 0",
           fontFamily: "var(--font-mono)",
           letterSpacing: "0.02em",
         }}
@@ -60,7 +60,7 @@ function ProjectBlock({
       <ul
         style={{
           margin: 0,
-          padding: "0 0 0 16px",
+          padding: "0 0 0 14px",
           display: "flex",
           flexDirection: "column",
           gap: "6px",
@@ -70,10 +70,10 @@ function ProjectBlock({
           <li
             key={i}
             style={{
-              fontSize: "0.875rem",
+              fontSize: "0.84rem",
               color: "var(--text-muted)",
-              lineHeight: 1.7,
-              paddingLeft: "4px",
+              lineHeight: 1.65,
+              paddingLeft: "2px",
             }}
           >
             {b}
@@ -92,101 +92,19 @@ function ExperienceCard({
   isLast: boolean;
 }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "0",
-        position: "relative",
-        padding: "0 4px",
-      }}
-    >
+    <div className="exp-row">
+      {/* Card */}
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          flexShrink: 0,
-          width: "30px",
-          paddingTop: "6px",
-        }}
-      >
-        <div style={{ position: "relative", flexShrink: 0 }}>
-          {exp.current && (
-            <span
-              style={{
-                position: "absolute",
-                inset: "-8px",
-                borderRadius: "50%",
-                background: "#4ade8040",
-                animation: "ping 2s ease-in-out infinite",
-              }}
-            />
-          )}
-          <div
-            style={{
-              width: "12px",
-              height: "12px",
-              borderRadius: "50%",
-              background: exp.current ? "#4ade80" : "var(--accent)",
-              border: `2px solid ${exp.current ? "#4ade8060" : "var(--bg-primary)"}`,
-              boxShadow: exp.current
-                ? "0 0 8px #4ade8066"
-                : "0 0 6px #6366f144",
-              zIndex: 1,
-              position: "relative",
-            }}
-          />
-        </div>
-        {!isLast && (
-          <div
-            style={{
-              flex: 1,
-              width: "1px",
-              marginTop: "8px",
-              background:
-                "linear-gradient(to bottom, var(--accent)40, transparent)",
-              minHeight: "32px",
-            }}
-          />
-        )}
-      </div>
-      <div
-        style={{
-          flex: 1,
-          marginLeft: "20px",
-          marginBottom: isLast ? "0" : "40px",
-          background: "var(--bg-surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "16px",
-          padding: "12px",
-        }}
+        className={`exp-card${isLast ? " exp-card--last" : ""}`}
         onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#6366f140")}
         onMouseLeave={(e) =>
           (e.currentTarget.style.borderColor = "var(--border)")
         }
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: "12px",
-            flexWrap: "wrap",
-            marginBottom: "4px",
-          }}
-        >
-          <div>
-            <h3
-              style={{
-                fontSize: "1.05rem",
-                fontWeight: 700,
-                color: "var(--text-primary)",
-                margin: "0 0 4px 0",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {exp.role}
-            </h3>
+        {/* Header: role + company / badges */}
+        <div className="exp-header">
+          <div style={{ minWidth: 0, flex: 1 }}>
+            <h3 className="exp-role">{exp.role}</h3>
             <p
               style={{
                 fontSize: "0.875rem",
@@ -199,23 +117,16 @@ function ExperienceCard({
               {exp.company}
             </p>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              gap: "6px",
-              flexShrink: 0,
-            }}
-          >
+
+          <div className="exp-badges">
             {exp.current && (
               <span
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "5px",
+                  gap: "10px",
                   height: "20px",
-                  padding: "0 10px",
+                  padding: "0 5px",
                   borderRadius: "999px",
                   background: "#4ade8015",
                   border: "1px solid #4ade8030",
@@ -225,6 +136,8 @@ function ExperienceCard({
                   textTransform: "uppercase",
                   color: "#4ade80",
                   fontFamily: "var(--font-mono)",
+                  flexShrink: 0,
+                  marginRight: "4px",
                 }}
               >
                 <span
@@ -241,12 +154,13 @@ function ExperienceCard({
             )}
             <span
               style={{
-                display: "inline-flex",
+                display: "flex",
                 alignItems: "center",
-                gap: "5px",
+                marginTop: "6px",
                 fontSize: "11px",
                 fontFamily: "var(--font-mono)",
                 color: "var(--text-dim)",
+                flexShrink: 0,
               }}
             >
               <Calendar size={11} strokeWidth={1.5} />
@@ -254,6 +168,8 @@ function ExperienceCard({
             </span>
           </div>
         </div>
+
+        {/* Location */}
         {exp.location && (
           <div
             style={{
@@ -261,7 +177,6 @@ function ExperienceCard({
               alignItems: "center",
               gap: "4px",
               marginTop: "8px",
-              marginBottom: "20px",
             }}
           >
             <MapPin
@@ -280,39 +195,26 @@ function ExperienceCard({
             </span>
           </div>
         )}
+
+        {/* Bullets */}
         {exp.bullets.length > 0 && (
-          <ul
-            style={{
-              margin: "16px 0 0 0",
-              padding: "0 0 0 16px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-            }}
-          >
+          <ul className="exp-bullets">
             {exp.bullets.map((b, i) => (
-              <li
-                key={i}
-                style={{
-                  fontSize: "0.875rem",
-                  color: "var(--text-muted)",
-                  lineHeight: 1.75,
-                  paddingLeft: "4px",
-                }}
-              >
+              <li key={i} className="exp-bullet">
                 {b}
               </li>
             ))}
           </ul>
         )}
 
-        {exp.projects && (
+        {/* Projects — name + bullets only, no extra wrapper chrome */}
+        {exp.projects && exp.projects.length > 0 && (
           <div
             style={{
-              marginTop: "20px",
+              marginTop: "16px",
               display: "flex",
               flexDirection: "column",
-              gap: "16px",
+              gap: "12px",
             }}
           >
             {exp.projects.map((p) => (
@@ -332,8 +234,8 @@ function ExperienceCard({
             display: "flex",
             flexWrap: "wrap",
             gap: "6px",
-            marginTop: "20px",
-            paddingTop: "16px",
+            marginBottom: "32px",
+            paddingTop: "14px",
             borderTop: "1px solid var(--border-subtle)",
           }}
         >
@@ -348,66 +250,69 @@ function ExperienceCard({
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      style={{
-        background: "var(--bg-primary)",
-        padding: "80px 10px",
-        borderTop: "1px solid var(--border-subtle)",
-      }}
-    >
-      <div style={{ textAlign: "center", marginBottom: "56px" }}>
-        <span
+    <section id="experience" className="exp-section">
+      <div className="exp-section-inner">
+        {/* Heading */}
+        <div
           style={{
-            display: "inline-block",
-            fontSize: "12px",
-            fontWeight: 500,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "var(--accent-light)",
-            background: "var(--accent-dim)",
-            padding: "4px 14px",
-            borderRadius: "999px",
-            border: "1px solid #6366f130",
-            marginBottom: "16px",
-            fontFamily: "var(--font-mono)",
+            textAlign: "center",
+            marginBottom: "clamp(36px, 6vw, 56px)",
           }}
         >
-          Career
-        </span>
-        <h2
-          style={{
-            fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
-            fontWeight: 600,
-            color: "var(--text-primary)",
-            margin: 0,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Work Experience
-        </h2>
-        <p
-          style={{
-            fontSize: "0.925rem",
-            color: "var(--text-muted)",
-            marginTop: "10px",
-          }}
-        >
-          Building products people actually use.
-        </p>
-      </div>
+          <span
+            style={{
+              display: "inline-block",
+              fontSize: "12px",
+              fontWeight: 500,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "var(--accent-light)",
+              background: "var(--accent-dim)",
+              padding: "4px 14px",
+              borderRadius: "999px",
+              border: "1px solid #6366f130",
+              marginBottom: "16px",
+              fontFamily: "var(--font-mono)",
+            }}
+          >
+            Career
+          </span>
+          <h2
+            style={{
+              fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
+              fontWeight: 600,
+              color: "var(--text-primary)",
+              margin: 0,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Work Experience
+          </h2>
+          <p
+            style={{
+              fontSize: "clamp(0.875rem, 2vw, 0.925rem)",
+              color: "var(--text-muted)",
+              marginTop: "10px",
+            }}
+          >
+            Building products people actually use.
+          </p>
+        </div>
 
-      <div style={{ margin: "auto" }}>
-        {[...experiences].reverse().map((exp, i) => (
-          <ExperienceCard
-            key={exp.id}
-            exp={exp}
-            isLast={i === experiences.length - 1}
-          />
-        ))}
+        {/* Timeline list */}
+        <div className="timeline-list">
+          {[...experiences].reverse().map((exp, i) => (
+            <ExperienceCard
+              key={exp.id}
+              exp={exp}
+              isLast={i === experiences.length - 1}
+            />
+          ))}
+        </div>
       </div>
 
       <style jsx>{`
+        /* ── keyframes ───────────────────────────────────── */
         @keyframes ping {
           0%,
           100% {
@@ -420,76 +325,129 @@ export default function Experience() {
           }
         }
 
-        @media (max-width: 768px) {
-          .timeline-column {
-            width: 28px !important;
-          }
+        /* ── Section wrapper ─────────────────────────────── */
+        .exp-section {
+          background: var(--bg-primary);
+          padding: clamp(48px, 8vw, 80px) 0;
+          border-top: 1px solid var(--border-subtle);
+        }
+        .exp-section-inner {
+          max-width: 1024px;
+          margin: 0 auto;
+          padding: 0 16px;
+        }
 
-          .experience-container {
-            padding: 0 16px !important;
-          }
+        /* ── Timeline list container ─────────────────────── */
+        .timeline-list {
+          max-width: 760px;
+          margin: 0 auto;
+        }
 
-          .experience-card {
-            padding: 20px !important;
-            margin-left: 12px !important;
-            border-radius: 14px !important;
-          }
+        /* ── Each row: dot-column + card ─────────────────── */
+        .exp-row {
+          display: flex;
+          gap: 0;
+          position: relative;
+        }
+        .timeline-col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-shrink: 0;
+          width: 28px;
+          padding-top: 6px;
+        }
 
-          .project-block {
-            padding: 14px !important;
-          }
+        /* ── Card ────────────────────────────────────────── */
+        .exp-card {
+          flex: 1;
+          min-width: 0;
+          margin-left: 14px;
+          margin-bottom: 28px;
+          background: var(--bg-surface);
+          border: 1px solid var(--border);
+          border-radius: 14px;
+          padding: 16px 14px;
+          transition: border-color 0.2s;
+        }
+        .exp-card--last {
+          margin-bottom: 0;
+        }
 
-          .experience-header {
+        /* ── Card header ─────────────────────────────────── */
+        .exp-header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-bottom: 4px;
+        }
+
+        /* ── Role title ──────────────────────────────────── */
+        .exp-role {
+          font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+          font-weight: 700;
+          color: var(--text-primary);
+          margin: 0 0 4px 0;
+          letter-spacing: -0.01em;
+        }
+
+        /* ── Bullet list ─────────────────────────────────── */
+        .exp-bullets {
+          margin: 14px 0 0 0;
+          padding: 0 0 0 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 7px;
+        }
+        .exp-bullet {
+          font-size: clamp(0.8rem, 2vw, 0.875rem);
+          color: var(--text-muted);
+          line-height: 1.7;
+          padding-left: 4px;
+        }
+
+        /* ── sm (≥ 480px) ────────────────────────────────── */
+        @media (min-width: 480px) {
+          .exp-section-inner {
+            padding: 0 20px;
+          }
+          .exp-card {
+            margin-left: 16px;
+            padding: 18px 16px;
+          }
+        }
+
+        /* ── md (≥ 640px) ────────────────────────────────── */
+        @media (min-width: 640px) {
+          .exp-section-inner {
+            padding: 0 24px;
+          }
+          .timeline-col {
+            width: 32px;
+          }
+          .exp-card {
+            margin-left: 20px;
+            margin-bottom: 36px;
+            border-radius: 16px;
+            padding: 22px 20px;
+          }
+        }
+
+        /* ── lg (≥ 1024px) ───────────────────────────────── */
+        @media (min-width: 1024px) {
+          .exp-card {
+            margin-bottom: 40px;
+            padding: 28px;
+          }
+        }
+
+        /* ── Tiny phones: stack header badges below title ── */
+        @media (max-width: 400px) {
+          .exp-header {
             flex-direction: column;
-            align-items: flex-start !important;
-            gap: 10px !important;
-          }
-
-          .experience-header > div:last-child {
-            align-items: flex-start !important;
-          }
-        }
-
-        @media (max-width: 480px) {
-          #experience {
-            padding: 50px 0 !important;
-          }
-
-          .experience-container {
-            padding: 0 12px !important;
-          }
-
-          .experience-card {
-            padding: 16px !important;
-            margin-left: 8px !important;
-          }
-
-          .project-block {
-            padding: 12px !important;
-          }
-
-          .experience-card h3 {
-            font-size: 0.95rem !important;
-            line-height: 1.4;
-          }
-
-          .experience-card ul li {
-            font-size: 0.82rem !important;
-            line-height: 1.6 !important;
-          }
-        }
-
-        @media (max-width: 375px) {
-          .experience-card {
-            padding: 14px !important;
-          }
-
-          .experience-card h3 {
-            font-size: 0.9rem !important;
-          }
-
-          .experience-card ul li {
-            font-size: 0.8rem !important;
+            gap: 8px;
           }
         }
       `}</style>

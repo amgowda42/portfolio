@@ -151,8 +151,7 @@ function ExperienceCard({
           background: "var(--bg-surface)",
           border: "1px solid var(--border)",
           borderRadius: "16px",
-          padding: "28px",
-          transition: "border-color 0.2s",
+          padding: "12px",
         }}
         onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#6366f140")}
         onMouseLeave={(e) =>
@@ -411,6 +410,79 @@ export default function Experience() {
           50% {
             transform: scale(1.8);
             opacity: 0;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .timeline-column {
+            width: 28px !important;
+          }
+
+          .experience-container {
+            padding: 0 16px !important;
+          }
+
+          .experience-card {
+            padding: 20px !important;
+            margin-left: 12px !important;
+            border-radius: 14px !important;
+          }
+
+          .project-block {
+            padding: 14px !important;
+          }
+
+          .experience-header {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 10px !important;
+          }
+
+          .experience-header > div:last-child {
+            align-items: flex-start !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          #experience {
+            padding: 50px 0 !important;
+          }
+
+          .experience-container {
+            padding: 0 12px !important;
+          }
+
+          .experience-card {
+            padding: 16px !important;
+            margin-left: 8px !important;
+          }
+
+          .project-block {
+            padding: 12px !important;
+          }
+
+          .experience-card h3 {
+            font-size: 0.95rem !important;
+            line-height: 1.4;
+          }
+
+          .experience-card ul li {
+            font-size: 0.82rem !important;
+            line-height: 1.6 !important;
+          }
+        }
+
+        @media (max-width: 375px) {
+          .experience-card {
+            padding: 14px !important;
+          }
+
+          .experience-card h3 {
+            font-size: 0.9rem !important;
+          }
+
+          .experience-card ul li {
+            font-size: 0.8rem !important;
           }
         }
       `}</style>

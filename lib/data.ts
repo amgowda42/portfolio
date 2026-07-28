@@ -1,4 +1,22 @@
-export const experiences = [
+type Project = {
+  name: string;
+  accent: string;
+  bullets: string[];
+};
+
+type Experience = {
+  id: number;
+  period: string;
+  role: string;
+  company: string;
+  location: string | null;
+  current: boolean;
+  bullets: string[];
+  skills: string[];
+  projects: Project[] | null;
+};
+
+export const experiences: Experience[] = [
   {
     id: 1,
     period: "Jun 2022 – Aug 2022",
@@ -33,34 +51,15 @@ export const experiences = [
     company: "BlipSnip Group (CertValue)",
     location: "Bangalore, India",
     current: true,
-    bullets: [],
-    skills: ["Next.js", "React.js", "Node.js", "Redux", "MongoDB"],
-    projects: [
-      {
-        name: "Customer Relationship Management System (CRMS)",
-        accent: "#06b6d4",
-        bullets: [
-          "Modernized system now actively used by 120+ daily users — streamlined ISO operations, operative lead tracking, and improved internal workflows.",
-          "Led complete restructuring of a legacy React 18 frontend, refactoring 700+ line monolithic components into a clean, modular, role-based architecture.",
-          "Replaced outdated routing and traditional Redux with modern React Router (Data Mode) for large-scale routing structures.",
-          "Implemented Role-Based Access Control (RBAC) for strict route protection and standardized the overarching UI design system.",
-        ],
-      },
-      {
-        name: "Digital Personal Data Protection Act (DPDPA) Platform",
-        accent: "#a78bfa",
-        bullets: [
-          "Took sole ownership of building over 90% of the entire frontend architecture.",
-          "Interfaced directly with clients to gather and analyze technical requirements, translating needs into high-quality deliverables.",
-        ],
-      },
-      {
-        name: "HRMS & Visitor Pass",
-        accent: "#4ade80",
-        bullets: [
-          "Managed ongoing maintenance, real-time data updates, and issue resolution across both products.",
-        ],
-      },
+    bullets: [
+      "Modernized a CRM system now actively used by 120+ daily users — streamlined ISO operations, operative lead tracking, and improved internal workflows.",
+      "Led complete restructuring of a legacy React 18 frontend, refactoring 700+ line monolithic components into a clean, modular, role-based architecture.",
+      "Replaced outdated routing and traditional Redux with modern React Router (Data Mode) for large-scale routing structures.",
+      "Implemented Role-Based Access Control (RBAC) for strict route protection and standardized the overarching UI design system.",
+      "Took sole ownership of building over 90% of the DPDPA platform's frontend architecture, interfacing directly with clients to gather requirements and translate them into high-quality deliverables.",
+      "Managed ongoing maintenance, real-time data updates, and issue resolution across the HRMS & Visitor Pass products.",
     ],
+    skills: ["Next.js", "React.js", "Node.js", "Redux", "MongoDB"],
+    projects: null,
   },
 ];

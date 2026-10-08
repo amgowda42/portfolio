@@ -15,9 +15,8 @@ export const metadata: Metadata = {
   description:
     "Full Stack Developer specializing in TypeScript, JavaScript, Python, Next.js, React.js, Node.js and modern web architecture.",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
   },
 };
 

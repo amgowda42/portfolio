@@ -59,7 +59,16 @@ export const experiences: Experience[] = [
       "Took sole ownership of building over 90% of the DPDPA platform's frontend architecture, interfacing directly with clients to gather requirements and translate them into high-quality deliverables.",
       "Managed ongoing maintenance, real-time data updates, and issue resolution across the HRMS & Visitor Pass products.",
     ],
-    skills: ["Next.js", "React.js", "Node.js", "Redux", "MongoDB"],
+    skills: [
+      "Next.js",
+      "React.js",
+      "Node.js",
+      "Redux",
+      "MongoDB",
+      "Redis",
+      "Docker",
+      "AWS",
+    ],
     projects: null,
   },
 ];

@@ -67,7 +67,7 @@ function ExperienceCard({
             <h3 className="m-0 mb-1 text-[clamp(0.9rem,2.5vw,1.05rem)] font-bold tracking-[-0.01em] text-foreground">
               {exp.role}
             </h3>
-            <p className="m-0 break-words font-mono text-sm font-semibold text-(--accent-light)">
+            <p className="m-0 wrap-break-words font-mono text-sm font-semibold text-(--accent-light)">
               {exp.company}
             </p>
           </div>

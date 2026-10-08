@@ -62,17 +62,17 @@ function ExperienceCard({
         }`}
       >
         {/* Header: role + company / badges */}
-        <div className="mb-1 flex flex-wrap items-start justify-between gap-2.5">
-          <div className="min-w-0 flex-1">
+        <div className="mb-1 flex flex-col gap-2.5 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0 sm:flex-1">
             <h3 className="m-0 mb-1 text-[clamp(0.9rem,2.5vw,1.05rem)] font-bold tracking-[-0.01em] text-foreground">
               {exp.role}
             </h3>
-            <p className="m-0 font-mono text-sm font-semibold text-(--accent-light)">
+            <p className="m-0 break-words font-mono text-sm font-semibold text-(--accent-light)">
               {exp.company}
             </p>
           </div>
 
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 sm:shrink-0">
             {exp.current && (
               <span className="mr-1 inline-flex h-5 shrink-0 items-center gap-2.5 rounded-full border border-[#4ade8030] bg-[#4ade8015] px-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.08em] text-[#4ade80]">
                 <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#4ade80]" />

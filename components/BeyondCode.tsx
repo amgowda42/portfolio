@@ -22,7 +22,7 @@ export default function BeyondCode() {
   return (
     <section
       id="beyond-code"
-      className="border-t border-(--border-subtle) bg-background py-20"
+      className="border-t border-(--border-subtle) bg-background py-14 sm:py-20"
     >
       <div className="mx-auto max-w-3xl px-6 sm:px-8">
         <div className="mb-10">

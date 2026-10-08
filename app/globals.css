@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-surface: #111118;
-  --bg-elevated: #16161f;
-  --border: #1e1e2e;
-  --border-subtle: #13131a;
-  --accent: #6366f1;
-  --accent-light: #818cf8;
-  --accent-dim: #6366f120;
-  --text-primary: #f1f5f9;
-  --text-muted: #94a3b8;
-  --text-dim: #475569;
-  --green: #10b981;
-  --cyan: #06b6d4;
+  --bg-primary: #050b09;
+  --bg-surface: #0b1512;
+  --bg-elevated: #101d18;
+  --border: #233a32;
+  --border-subtle: #172b26;
+  --accent: #4ade80;
+  --accent-light: #a7f3bf;
+  --accent-dim: rgba(74, 222, 128, 0.12);
+  --text-primary: #f0fdf4;
+  --text-muted: #a7b5ad;
+  --text-dim: #71857b;
+  --green: #4ade80;
+  --cyan: #6ee7b7;
 }
 
 @theme inline {
@@ -29,14 +29,25 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans), Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::-webkit-scrollbar {

@@ -18,85 +18,85 @@ const skills = [
     name: "JavaScript",
     sub: "ES6+",
     icon: FileJson,
-    accent: "#facc15",
-    glow: "#facc1520",
+    accent: "#86efac",
+    glow: "rgba(134, 239, 172, 0.14)",
   },
   {
     name: "TypeScript",
     sub: "Strongly Typed",
     icon: Braces,
-    accent: "#60a5fa",
-    glow: "#60a5fa20",
+    accent: "#4ade80",
+    glow: "rgba(74, 222, 128, 0.14)",
   },
   {
     name: "React.js",
     sub: "UI Library",
     icon: Layers,
-    accent: "#22d3ee",
-    glow: "#22d3ee20",
+    accent: "#6ee7b7",
+    glow: "rgba(110, 231, 183, 0.14)",
   },
   {
     name: "Next.js",
     sub: "Full-stack Framework",
     icon: Zap,
-    accent: "#f1f5f9",
-    glow: "#f1f5f915",
+    accent: "#a7f3bf",
+    glow: "rgba(167, 243, 191, 0.14)",
   },
   {
     name: "Vite",
     sub: "Build Tool",
     icon: Sparkles,
-    accent: "#a78bfa",
-    glow: "#a78bfa20",
+    accent: "#34d399",
+    glow: "rgba(52, 211, 153, 0.14)",
   },
   {
     name: "Redux",
     sub: "RTK Query",
     icon: Package,
-    accent: "#c084fc",
-    glow: "#c084fc20",
+    accent: "#86efac",
+    glow: "rgba(134, 239, 172, 0.14)",
   },
   {
     name: "Node.js",
     sub: "Runtime",
     icon: Leaf,
     accent: "#4ade80",
-    glow: "#4ade8020",
+    glow: "rgba(74, 222, 128, 0.14)",
   },
   {
     name: "Express.js",
     sub: "Web Framework",
     icon: Server,
-    accent: "#94a3b8",
-    glow: "#94a3b815",
+    accent: "#a7f3bf",
+    glow: "rgba(167, 243, 191, 0.14)",
   },
   {
     name: "MongoDB",
     sub: "NoSQL Database",
     icon: Database,
-    accent: "#34d399",
-    glow: "#34d39920",
+    accent: "#6ee7b7",
+    glow: "rgba(110, 231, 183, 0.14)",
   },
   {
     name: "Git & GitHub",
     sub: "Version Control",
     icon: GitBranch,
-    accent: "#fb923c",
-    glow: "#fb923c20",
+    accent: "#34d399",
+    glow: "rgba(52, 211, 153, 0.14)",
   },
   {
     name: "FastAPI",
     sub: "Python Framework",
     icon: Zap,
-    accent: "#38bdf8",
-    glow: "#38bdf820",
+    accent: "#86efac",
+    glow: "rgba(134, 239, 172, 0.14)",
   },
   {
     name: "Docker",
     sub: "Containerization",
     icon: Package,
-    accent: "#2496ed",
-    glow: "#2496ed20",
+    accent: "#4ade80",
+    glow: "rgba(74, 222, 128, 0.14)",
   },
 ];
 
@@ -104,77 +104,27 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      style={{
-        background: "var(--bg-primary)",
-        padding: "80px 0",
-        borderTop: "1px solid var(--border-subtle)",
-      }}
+      className="border-t border-(--border-subtle) bg-background py-16 sm:py-20"
     >
-      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ textAlign: "center", marginBottom: "52px" }}>
-          <span
-            style={{
-              display: "inline-block",
-              fontSize: "11px",
-              fontFamily: "var(--font-mono)",
-              fontWeight: 500,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "var(--accent-light)",
-              background: "var(--accent-dim)",
-              padding: "4px 14px",
-              borderRadius: "999px",
-              border: "1px solid #6366f130",
-              marginBottom: "16px",
-            }}
-          >
+      <div className="mx-auto max-w-5xl px-4 sm:px-8">
+        <div className="mx-auto mb-10 text-center sm:mb-13">
+          <span className="mb-4 inline-block rounded-full border border-(--border) bg-(--accent-dim) px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.15em] text-(--accent-light) sm:px-3.5 sm:text-[11px]">
             What I work with
           </span>
-          <h2
-            style={{
-              fontSize: "clamp(1.6rem, 3vw, 2.1rem)",
-              fontWeight: 700,
-              color: "var(--text-primary)",
-              margin: "0 0 16px",
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h2 className="mb-4 text-balance text-[clamp(1.6rem,7vw,2.1rem)] font-bold tracking-[-0.02em] text-foreground">
             Skills & Technologies
           </h2>
-          <div
-            style={{
-              width: "40px",
-              height: "3px",
-              borderRadius: "999px",
-              background: "linear-gradient(90deg, var(--accent), var(--cyan))",
-              margin: "0 auto",
-            }}
-          />
+          <div className="mx-auto h-0.75 w-10 rounded-full bg-linear-to-r from-(--accent) to-(--cyan)" />
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
-            gap: "12px",
-          }}
-          className="skills-grid"
-        >
-          {skills.map((skill, i) => {
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-5">
+          {skills.map((skill) => {
             const Icon = skill.icon;
             return (
               <div
-                key={i}
+                key={skill.name}
+                className="flex min-w-0 cursor-default flex-col items-center gap-2 rounded-[14px] border border-(--border) bg-(--bg-surface) p-3 text-center transition duration-200 hover:-translate-y-1 sm:gap-2.5 sm:p-5"
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "20px 12px",
-                  borderRadius: "14px",
-                  background: "var(--bg-surface)",
-                  border: "1px solid var(--border)",
-                  textAlign: "center",
-                  cursor: "default",
+                  boxShadow: "none",
                   transition:
                     "border-color 0.2s, transform 0.2s, box-shadow 0.2s",
                 }}
@@ -190,39 +140,25 @@ export default function Skills() {
                 }}
               >
                 <div
+                  className="flex size-10 shrink-0 items-center justify-center rounded-xl border sm:size-11"
                   style={{
-                    width: "44px",
-                    height: "44px",
-                    borderRadius: "12px",
                     background: skill.glow,
-                    border: `1px solid ${skill.accent}25`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
+                    borderColor: `${skill.accent}25`,
                   }}
                 >
-                  <Icon size={22} strokeWidth={1.8} color={skill.accent} />
+                  <Icon
+                    size={20}
+                    strokeWidth={1.8}
+                    color={skill.accent}
+                    className="sm:size-5.5"
+                  />
                 </div>
 
-                <div>
-                  <p
-                    style={{
-                      fontSize: "0.8rem",
-                      fontWeight: 600,
-                      color: "var(--text-primary)",
-                      margin: "0 0 2px",
-                    }}
-                  >
+                <div className="min-w-0">
+                  <p className="mb-0.5 wrap-break-words text-xs font-semibold text-foreground sm:text-sm">
                     {skill.name}
                   </p>
-                  <p
-                    style={{
-                      fontSize: "0.7rem",
-                      color: "var(--text-dim)",
-                      margin: 0,
-                    }}
-                  >
+                  <p className="m-0 wrap-break-words text-[10px] text-(--text-dim) sm:text-xs">
                     {skill.sub}
                   </p>
                 </div>
@@ -231,19 +167,6 @@ export default function Skills() {
           })}
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 640px) {
-          .skills-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (min-width: 641px) and (max-width: 900px) {
-          .skills-grid {
-            grid-template-columns: repeat(3, 1fr) !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

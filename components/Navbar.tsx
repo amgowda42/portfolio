@@ -20,6 +20,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -33,223 +40,99 @@ export default function Navbar() {
   return (
     <>
       <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          transition: "all 0.3s ease",
-          background: isScrolled ? "rgba(10, 10, 15, 0.85)" : "transparent",
-          backdropFilter: isScrolled ? "blur(16px)" : "none",
-          borderBottom: isScrolled
-            ? "1px solid var(--border)"
-            : "1px solid transparent",
-        }}
+        className={`fixed inset-x-0 top-0 z-50 h-16 border-b pt-[env(safe-area-inset-top)] transition-all duration-300 ${
+          isScrolled
+            ? "border-(--border) bg-[rgba(10,10,15,0.85)] backdrop-blur-xl"
+            : "border-transparent bg-transparent"
+        }`}
       >
-        <div
-          style={{ maxWidth: "1024px", margin: "0 auto", padding: "0 24px" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              height: "64px",
-            }}
+        <div className="mx-auto flex h-full max-w-5xl items-center justify-between px-4 sm:px-6">
+          <button
+            onClick={() => scrollToSection("about")}
+            className="flex min-w-0 cursor-pointer items-center gap-2 bg-transparent p-0"
+            aria-label="Go to the about section"
           >
-            <button
-              onClick={() => scrollToSection("about")}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <span
-                style={{
-                  width: "28px",
-                  height: "28px",
-                  borderRadius: "8px",
-                  background: "var(--accent)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  color: "#fff",
-                  fontFamily: "var(--font-mono)",
-                }}
-              >
-                AG
-              </span>
-              <span
-                style={{
-                  fontSize: "0.95rem",
-                  fontWeight: 600,
-                  color: "var(--text-primary)",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Annappa Gowda
-              </span>
-            </button>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "4px",
-              }}
-              className="hidden-mobile"
-            >
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: "6px 14px",
-                    borderRadius: "8px",
-                    fontSize: "0.875rem",
-                    fontWeight: 500,
-                    color: "var(--text-muted)",
-                    transition: "color 0.2s, background 0.2s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "var(--text-primary)";
-                    e.currentTarget.style.background = "var(--bg-surface)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "var(--text-muted)";
-                    e.currentTarget.style.background = "transparent";
-                  }}
-                >
-                  {item.name}
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              style={{
-                background: "none",
-                border: "1px solid var(--border)",
-                borderRadius: "8px",
-                padding: "6px",
-                cursor: "pointer",
-                color: "var(--text-muted)",
-                display: "none",
-              }}
-              className="show-mobile"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X size={20} strokeWidth={2} />
-              ) : (
-                <Menu size={20} strokeWidth={2} />
-              )}
-            </button>
-          </div>
-        </div>
-      </nav>
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 40,
-          pointerEvents: isMobileMenuOpen ? "auto" : "none",
-        }}
-      >
-        <div
-          onClick={() => setIsMobileMenuOpen(false)}
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(0,0,0,0.6)",
-            backdropFilter: "blur(4px)",
-            opacity: isMobileMenuOpen ? 1 : 0,
-            transition: "opacity 0.3s",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: "260px",
-            height: "100%",
-            background: "var(--bg-surface)",
-            borderLeft: "1px solid var(--border)",
-            transform: isMobileMenuOpen ? "translateX(0)" : "translateX(100%)",
-            transition: "transform 0.3s ease",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              padding: "16px",
-              borderBottom: "1px solid var(--border)",
-            }}
-          ></div>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-(--accent) font-mono text-[11px] font-bold text-[#031a0d]">
+              AG
+            </span>
+            <span className="truncate text-[0.9rem] font-semibold tracking-[-0.01em] text-foreground sm:text-[0.95rem]">
+              Annappa Gowda
+            </span>
+          </button>
 
-          <div
-            style={{
-              padding: "30px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "4px",
-            }}
-          >
+          <div className="hidden items-center gap-1 md:flex">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  textAlign: "left",
-                  padding: "12px 16px",
-                  borderRadius: "10px",
-                  fontSize: "0.95rem",
-                  fontWeight: 500,
-                  color: "var(--text-muted)",
-                  transition: "color 0.2s, background 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "var(--text-primary)";
-                  e.currentTarget.style.background = "var(--bg-elevated)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--text-muted)";
-                  e.currentTarget.style.background = "transparent";
-                }}
+                className="cursor-pointer rounded-lg px-3.5 py-1.5 text-sm font-medium text-(--text-muted) transition-colors duration-200 hover:bg-(--bg-surface) hover:text-foreground"
               >
                 {item.name}
               </button>
             ))}
           </div>
-        </div>
-      </div>
 
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .hidden-mobile {
-            display: none !important;
-          }
-          .show-mobile {
-            display: flex !important;
-          }
-        }
-      `}</style>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-(--border) bg-transparent text-(--text-muted) transition-colors duration-200 hover:bg-(--bg-surface) hover:text-foreground md:hidden"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
+          >
+            {isMobileMenuOpen ? (
+              <X size={20} strokeWidth={2} />
+            ) : (
+              <Menu size={20} strokeWidth={2} />
+            )}
+          </button>
+        </div>
+      </nav>
+
+      <div
+        className={`fixed inset-0 z-40 ${
+          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        aria-hidden={!isMobileMenuOpen}
+      >
+        <div
+          onClick={() => setIsMobileMenuOpen(false)}
+          className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+            isMobileMenuOpen ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <nav
+          id="mobile-navigation"
+          className={`absolute right-0 top-0 flex h-full w-[min(82vw,22rem)] flex-col border-l border-(--border) bg-(--bg-surface) pt-[calc(env(safe-area-inset-top)+1rem)] shadow-2xl transition-transform duration-300 ${
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          aria-label="Mobile navigation"
+        >
+          <div className="flex items-center justify-between border-b border-(--border) px-5 py-4">
+            <span className="font-mono text-xs font-medium uppercase tracking-[0.12em] text-(--accent-light)">
+              Navigation
+            </span>
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-(--text-muted) transition-colors hover:bg-(--bg-elevated) hover:text-foreground"
+              aria-label="Close navigation"
+            >
+              <X size={18} strokeWidth={2} />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-1 p-4 sm:p-6">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="cursor-pointer rounded-xl border-0 bg-transparent px-4 py-3.5 text-left text-[0.95rem] font-medium text-(--text-muted) transition-colors duration-200 hover:bg-(--bg-elevated) hover:text-foreground"
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+        </nav>
+      </div>
     </>
   );
 }

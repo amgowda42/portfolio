@@ -25,7 +25,7 @@ const projects: Project[] = [
       "Comprehensive vehicle details, mileage, and pricing overview",
     ],
     tags: ["React.js", "Node.js", "MongoDB"],
-    accent: "#6366f1",
+    accent: "#6ee7b7",
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const projects: Project[] = [
       "Track progress visually and stay on top of milestones",
     ],
     tags: ["React.js", "Node.js", "MongoDB"],
-    accent: "#22d3ee",
+    accent: "#4ade80",
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ const projects: Project[] = [
       "Seamless add-to-cart with persistent store",
     ],
     tags: ["React.js", "Redux Toolkit"],
-    accent: "#f97316",
+    accent: "#86efac",
   },
   {
     id: 4,
@@ -60,7 +60,7 @@ const projects: Project[] = [
     subtitle: "This site",
     points: ["Modern dark-themed portfolio showcasing projects and skills"],
     tags: ["Next.js", "Vercel"],
-    accent: "#4ade80",
+    accent: "#34d399",
   },
 ];
 
@@ -68,181 +68,64 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      style={{
-        background: "var(--bg-primary)",
-        padding: "80px 0",
-        borderTop: "1px solid var(--border-subtle)",
-      }}
+      className="border-t border-(--border-subtle) bg-background py-16 sm:py-20"
     >
-      <div style={{ maxWidth: "1024px", margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ textAlign: "center", marginBottom: "52px" }}>
-          <span
-            style={{
-              display: "inline-block",
-              fontSize: "11px",
-              fontFamily: "var(--font-mono)",
-              fontWeight: 500,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "var(--accent-light)",
-              background: "var(--accent-dim)",
-              padding: "4px 14px",
-              borderRadius: "999px",
-              border: "1px solid #6366f130",
-              marginBottom: "16px",
-            }}
-          >
+      <div className="mx-auto max-w-5xl px-4 sm:px-8">
+        <div className="mx-auto mb-10 text-center sm:mb-12">
+          <span className="mb-4 inline-block rounded-full border border-(--border) bg-(--accent-dim) px-3.5 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-(--accent-light)">
             Work
           </span>
-          <h2
-            style={{
-              fontSize: "clamp(1.6rem, 3vw, 2.1rem)",
-              fontWeight: 700,
-              color: "var(--text-primary)",
-              margin: "0 0 16px",
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h2 className="mb-4 text-balance text-[clamp(1.6rem,7vw,2.1rem)] font-bold tracking-[-0.02em] text-foreground">
             Featured Projects
           </h2>
-          <div
-            style={{
-              width: "40px",
-              height: "3px",
-              borderRadius: "999px",
-              background: "linear-gradient(90deg, var(--accent), var(--cyan))",
-              margin: "0 auto",
-            }}
-          />
+          <div className="mx-auto h-0.75 w-10 rounded-full bg-linear-to-r from-(--accent) to-(--cyan)" />
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "16px",
-          }}
-          className="projects-grid"
-        >
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {projects.map((project) => (
             <a
               key={project.id}
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                padding: "28px",
-                borderRadius: "16px",
-                background: "var(--bg-surface)",
-                border: "1px solid var(--border)",
-                textDecoration: "none",
-                transition:
-                  "border-color 0.25s, transform 0.25s, box-shadow 0.25s",
-                position: "relative",
-                overflow: "hidden",
-              }}
-              onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                e.currentTarget.style.borderColor = project.accent + "50";
-                e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.boxShadow = `0 20px 48px ${project.accent}18`;
-              }}
-              onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                e.currentTarget.style.borderColor = "var(--border)";
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
+              className="group relative flex min-w-0 flex-col overflow-hidden rounded-2xl border border-(--border) bg-(--bg-surface) p-5 no-underline transition duration-300 hover:-translate-y-1 hover:border-(--accent)/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-7"
+              style={{ boxShadow: `0 0 0 1px ${project.accent}10` }}
             >
               <div
+                className="absolute inset-x-0 top-0 h-0.5 opacity-60"
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: "2px",
                   background: `linear-gradient(90deg, ${project.accent}, transparent)`,
-                  opacity: 0.6,
                 }}
               />
 
-              <div
-                style={{
-                  position: "absolute",
-                  top: "20px",
-                  right: "20px",
-                  width: "32px",
-                  height: "32px",
-                  borderRadius: "8px",
-                  background: "var(--bg-elevated)",
-                  border: "1px solid var(--border)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <ArrowUpRight
-                  size={16}
-                  color="var(--text-dim)"
-                  strokeWidth={2}
-                />
+              <div className="absolute right-5 top-5 flex size-8 items-center justify-center rounded-lg border border-(--border) bg-(--bg-elevated) transition-colors duration-300 group-hover:border-(--accent)/50 group-hover:bg-(--accent-dim)">
+                <ArrowUpRight className="size-4 text-(--text-dim) transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
 
-              <div style={{ marginBottom: "16px", paddingRight: "40px" }}>
-                <h3
-                  style={{
-                    fontSize: "1.05rem",
-                    fontWeight: 700,
-                    color: "var(--text-primary)",
-                    margin: "0 0 4px",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
+              <div className="mb-4 min-w-0 pr-10">
+                <h3 className="mb-1 text-[1.05rem] font-bold tracking-[-0.01em] text-foreground">
                   {project.title}
                 </h3>
                 <p
+                  className="m-0 text-xs opacity-80"
                   style={{
-                    fontSize: "0.78rem",
                     fontFamily: "var(--font-mono)",
                     color: project.accent,
-                    margin: 0,
-                    opacity: 0.8,
                   }}
                 >
                   {project.subtitle}
                 </p>
               </div>
 
-              <ul
-                style={{
-                  listStyle: "none",
-                  padding: 0,
-                  margin: "0 0 20px",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "8px",
-                  flex: 1,
-                }}
-              >
-                {project.points.map((point, i) => (
+              <ul className="mb-5 flex flex-1 list-none flex-col gap-2 p-0">
+                {project.points.map((point, index) => (
                   <li
-                    key={i}
-                    style={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: "8px",
-                      fontSize: "0.845rem",
-                      color: "var(--text-muted)",
-                      lineHeight: 1.6,
-                    }}
+                    key={index}
+                    className="flex items-start gap-2 text-[0.845rem] leading-6 text-(--text-muted)"
                   >
                     <span
-                      style={{
-                        color: project.accent,
-                        flexShrink: 0,
-                        marginTop: "1px",
-                        fontSize: "10px",
-                      }}
+                      className="mt-px shrink-0 text-[10px]"
+                      style={{ color: project.accent }}
                     >
                       ▸
                     </span>
@@ -251,19 +134,16 @@ export default function Projects() {
                 ))}
               </ul>
 
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                {project.tags.map((tag, i) => (
+              <div className="flex flex-wrap gap-1.5">
+                {project.tags.map((tag, index) => (
                   <span
-                    key={i}
+                    key={index}
+                    className="rounded-full border px-2.5 py-1 text-[0.7rem] font-medium"
                     style={{
-                      fontSize: "0.7rem",
                       fontFamily: "var(--font-mono)",
-                      fontWeight: 500,
-                      padding: "3px 10px",
-                      borderRadius: "999px",
-                      background: project.accent + "15",
+                      background: `${project.accent}15`,
+                      borderColor: `${project.accent}30`,
                       color: project.accent,
-                      border: `1px solid ${project.accent}30`,
                     }}
                   >
                     {tag}
@@ -274,14 +154,6 @@ export default function Projects() {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 640px) {
-          .projects-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

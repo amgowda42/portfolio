@@ -1,7 +1,6 @@
 "use client";
 
 import { Github, Twitter, Linkedin, PenLine } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
 
 const socials = [
   {
@@ -46,45 +45,17 @@ const floatingTokens = [
 ];
 
 export default function Bio() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      setMousePos({
-        x: ((e.clientX - rect.left) / rect.width - 0.5) * 20,
-        y: ((e.clientY - rect.top) / rect.height - 0.5) * 20,
-      });
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
-
   return (
     <section
       id="about"
-      ref={sectionRef}
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        overflow: "hidden",
-        background: "var(--bg-primary)",
-        paddingTop: "40px",
-      }}
+      className="relative flex min-h-screen items-center overflow-hidden bg-background pt-10"
     >
       <div
         aria-hidden
+        className="pointer-events-none absolute inset-0 bg-size-[48px_48px]"
         style={{
-          position: "absolute",
-          inset: 0,
           backgroundImage:
             "linear-gradient(var(--border-subtle) 1px, transparent 1px), linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-          pointerEvents: "none",
           maskImage:
             "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)",
         }}
@@ -93,187 +64,89 @@ export default function Bio() {
         <span
           key={i}
           aria-hidden
+          className="pointer-events-none absolute select-none font-mono text-[11px] text-(--accent-dim)"
           style={{
-            position: "absolute",
-            fontFamily: "var(--font-mono)",
-            fontSize: "11px",
-            color: "#6366f120",
             left: `${8 + i * 11}%`,
             top: `${18 + (i % 4) * 20}%`,
             animation: `floatCode ${6 + i * 0.6}s ease-in-out infinite`,
             animationDelay: `${i * 0.7}s`,
-            userSelect: "none",
-            pointerEvents: "none",
           }}
         >
           {text}
         </span>
       ))}
 
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "720px",
-          margin: "0 auto",
-          padding: "80px 24px",
-        }}
-      >
+      <div className="relative mx-auto w-full max-w-180 px-4 py-20 sm:px-6 sm:py-24 lg:py-28">
         {/* ── SINGLE COLUMN ── */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              flexWrap: "wrap",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "11px",
-                fontFamily: "var(--font-mono)",
-                fontWeight: 500,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "var(--accent-light)",
-                background: "var(--accent-dim)",
-                border: "1px solid #6366f128",
-                padding: "4px 12px",
-                borderRadius: "999px",
-              }}
-            >
+        <div className="flex flex-col gap-6 sm:gap-7">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-(--border) bg-(--accent-dim) px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-(--accent-light) sm:px-3 sm:text-[11px]">
               Full Stack Developer
             </span>
 
-            <span style={{ color: "var(--border)", fontSize: "12px" }}>·</span>
+            <span className="text-xs text-(--border)">·</span>
 
-            <span
-              style={{
-                fontSize: "11px",
-                fontFamily: "var(--font-mono)",
-                fontWeight: 500,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "#a78bfa",
-                background: "#a78bfa15",
-                border: "1px solid #a78bfa28",
-                padding: "4px 12px",
-                borderRadius: "999px",
-              }}
-            >
+            <span className="rounded-full border border-(--border) bg-(--accent-dim) px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-(--accent-light) sm:px-3 sm:text-[11px]">
               Wordsmith
             </span>
           </div>
 
           <div>
-            <h1
-              style={{
-                fontSize: "clamp(2.8rem, 6vw, 4.5rem)",
-                fontWeight: 800,
-                lineHeight: 1.05,
-                letterSpacing: "-0.03em",
-                color: "var(--text-primary)",
-                margin: 0,
-              }}
-            >
+            <h1 className="m-0 text-[clamp(2.6rem,12vw,4.5rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-foreground sm:leading-[1.05]">
               Annappa
               <br />
-              <span
-                style={{
-                  background:
-                    "linear-gradient(135deg, #818cf8 0%, #6366f1 40%, #06b6d4 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
+              <span className="bg-[linear-gradient(135deg,#a7f3bf_0%,#4ade80_40%,#34d399_100%)] bg-clip-text text-transparent">
                 Gowda
               </span>
             </h1>
           </div>
 
           {/* ── BIO POINTS ── */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "12px",
-              maxWidth: "560px",
-            }}
-          >
+          <div className="flex max-w-140 flex-col gap-3">
             {[
               <>
-                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                <span className="font-medium text-foreground">
                   Full Stack Developer
                 </span>{" "}
                 focused on{" "}
-                <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
+                <span className="font-medium text-(--accent-light)">
                   TypeScript &amp; JavaScript
                 </span>{" "}
                 for front-end and{" "}
-                <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
+                <span className="font-medium text-(--accent-light)">
                   Node.js &amp; Python
                 </span>{" "}
                 for robust backends.
               </>,
               <>
                 Specializes in{" "}
-                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                <span className="font-medium text-foreground">
                   clean API design
                 </span>
                 , scalable architecture, and maintainable codebases.
               </>,
               <>
                 Infrastructure across{" "}
-                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                <span className="font-medium text-foreground">
                   AWS EC2, Vercel, Nginx, Docker &amp; GitHub Actions CI/CD
                 </span>{" "}
                 — with{" "}
-                <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
-                  Redis
-                </span>{" "}
+                <span className="font-medium text-(--accent-light)">Redis</span>{" "}
                 for performance and scaling.
               </>,
               <>
                 Actively exploring{" "}
-                <span style={{ color: "var(--accent-light)", fontWeight: 500 }}>
+                <span className="font-medium text-(--accent-light)">
                   AI-driven development
                 </span>{" "}
                 — agents, modern workflows, and{" "}
-                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
-                  vibe coding
-                </span>{" "}
+                <span className="font-medium text-foreground">vibe coding</span>{" "}
                 to build faster and smarter.
               </>,
             ].map((point, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "12px",
-                }}
-              >
-                <span
-                  style={{
-                    marginTop: "8px",
-                    width: "4px",
-                    height: "4px",
-                    borderRadius: "50%",
-                    background: "var(--accent)",
-                    flexShrink: 0,
-                    opacity: 0.7,
-                  }}
-                />
-                <p
-                  style={{
-                    fontSize: "0.95rem",
-                    color: "var(--text-muted)",
-                    lineHeight: 1.75,
-                    margin: 0,
-                  }}
-                >
+              <div key={i} className="flex items-start gap-3">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-(--accent) opacity-70" />
+                <p className="m-0 text-sm leading-[1.75] text-(--text-muted) sm:text-[0.95rem]">
                   {point}
                 </p>
               </div>
@@ -281,18 +154,7 @@ export default function Bio() {
           </div>
 
           {/* ── SOCIALS ── */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: "4px",
-              padding: "8px",
-              borderRadius: "12px",
-              border: "1px solid var(--border)",
-              background: "var(--bg-surface)",
-              width: "fit-content",
-            }}
-          >
+          <div className="flex w-fit max-w-full flex-wrap gap-1 rounded-xl border border-(--border) bg-(--bg-surface) p-2">
             {socials.map((social) => (
               <a
                 key={social.label}
@@ -300,28 +162,7 @@ export default function Bio() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "8px",
-                  border: "1px solid transparent",
-                  textDecoration: "none",
-                  transition: "all 0.2s",
-                  color: "var(--text-dim)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "var(--bg-primary)";
-                  e.currentTarget.style.borderColor = "var(--border)";
-                  e.currentTarget.style.color = "var(--accent-light)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "transparent";
-                  e.currentTarget.style.color = "var(--text-dim)";
-                }}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-transparent text-(--text-dim) no-underline transition-all duration-200 hover:border-(--border) hover:bg-background hover:text-(--accent-light)"
               >
                 {social.icon}
               </a>
@@ -329,49 +170,16 @@ export default function Bio() {
           </div>
 
           {/* ── WRITING SECTION ── */}
-          <div
-            style={{
-              padding: "20px 24px",
-              borderRadius: "14px",
-              border: "1px solid #a78bfa28",
-              background: "#a78bfa08",
-              maxWidth: "560px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <PenLine size={14} style={{ color: "#a78bfa" }} />
-              <span
-                style={{
-                  fontSize: "11px",
-                  fontFamily: "var(--font-mono)",
-                  fontWeight: 500,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "#a78bfa",
-                }}
-              >
+          <div className="flex max-w-140 flex-col gap-2.5 rounded-[14px] border border-(--border) bg-(--accent-dim) px-4 py-4 sm:px-6 sm:py-5">
+            <div className="flex items-center gap-2">
+              <PenLine size={14} className="text-(--accent-light)" />
+              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-(--accent-light) sm:text-[11px]">
                 Beyond the Code
               </span>
             </div>
-            <p
-              style={{
-                fontSize: "0.9rem",
-                color: "var(--text-muted)",
-                lineHeight: 1.75,
-                margin: 0,
-              }}
-            >
+            <p className="m-0 text-sm leading-[1.75] text-(--text-muted) sm:text-[0.9rem]">
               Also a{" "}
-              <span style={{ color: "#a78bfa", fontWeight: 500 }}>
+              <span className="font-medium text-(--accent-light)">
                 hobbyist wordsmith
               </span>{" "}
               — I write short stories, articles, and theatre. Storytelling is
@@ -383,38 +191,12 @@ export default function Bio() {
 
       <div
         aria-hidden
-        style={{
-          position: "absolute",
-          bottom: "32px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "6px",
-          opacity: 0.3,
-        }}
+        className="pointer-events-none absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 opacity-30"
       >
-        <span
-          style={{
-            fontSize: "10px",
-            fontFamily: "var(--font-mono)",
-            color: "var(--text-muted)",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-          }}
-        >
+        <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-(--text-muted)">
           scroll
         </span>
-        <div
-          style={{
-            width: "1px",
-            height: "32px",
-            background:
-              "linear-gradient(to bottom, var(--text-muted), transparent)",
-            animation: "pulse 2s ease-in-out infinite",
-          }}
-        />
+        <div className="h-8 w-px animate-[pulse_2s_ease-in-out_infinite] bg-linear-to-b from-(--text-muted) to-transparent" />
       </div>
 
       <style jsx>{`

@@ -19,7 +19,7 @@ export default function Page() {
           width: "800px",
           height: "500px",
           background:
-            "radial-gradient(ellipse at center, #6366f118 0%, transparent 70%)",
+            "radial-gradient(ellipse at center, rgba(74, 222, 128, 0.1) 0%, transparent 70%)",
           pointerEvents: "none",
           zIndex: 0,
         }}

@@ -48,7 +48,7 @@ export default function Bio() {
   return (
     <section
       id="about"
-      className="relative flex min-h-screen items-center overflow-hidden bg-background pt-10"
+      className="relative flex min-h-svh items-center overflow-hidden bg-background pt-10"
     >
       <div
         aria-hidden
@@ -76,7 +76,7 @@ export default function Bio() {
         </span>
       ))}
 
-      <div className="relative mx-auto w-full max-w-180 px-4 py-20 sm:px-6 sm:py-24 lg:py-28">
+      <div className="relative mx-auto w-full max-w-180 px-4 py-16 sm:px-6 sm:py-24 lg:py-28">
         {/* ── SINGLE COLUMN ── */}
         <div className="flex flex-col gap-6 sm:gap-7">
           <div className="flex flex-wrap items-center gap-2">

@@ -16,7 +16,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="border-t border-(--border-subtle) bg-background py-20 pb-16"
+      className="border-t border-(--border-subtle) bg-background py-14 pb-12 sm:py-20 sm:pb-16"
     >
       <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
         <span className="mb-5 inline-block rounded-full border border-(--border) bg-(--accent-dim) px-3.5 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.15em] text-(--accent-light)">
